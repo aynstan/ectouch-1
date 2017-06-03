@@ -1,0 +1,11 @@
+环境及安装说明：
+1、环境要求：
+Windows 平台：IIS/Apache/Nginx + PHP5.3 + MySQL5.1
+Linux/Unix/Mac OS X 平台：Apache/Nginx + PHP5.3 + MySQL5.1 (PHP必须在非安全模式下运行)
+建议使用平台：CentOS + Nginx1.6 + PHP5.3 + MySQL5.1
+PHP必须环境或启用的系统函数：
+curl、allow_url_fopen、gettext本地化扩展、GD扩展库、MySQL扩展库、系统函数phpinfo、dir等。
+2、使用微商城配置要求：
+必须开通并认证公众服务号--mp.weixin.qq.com
+必须域名备案
+3、源码上传到空间后，访问域名会出现安装向导，根据向导默认安装即可。
