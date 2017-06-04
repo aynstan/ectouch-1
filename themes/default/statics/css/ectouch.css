@@ -754,6 +754,39 @@ a.a-sequence .iconfont.icon-icon-square:before{font-size:3.2rem;}
 .mune-no-img span{border:1px solid #efefef; color:#555; border-radius: 4px;}
 
 
+
+/*=======================================
+        商品列表页
+  =======================================*/
+/*弹出层部分共用样式重写*/
+.c-filter-div .filter-city{margin-top:1px;}
+.c-filter-div .select-one,.c-filter-div .select-two{margin-top:.7rem;}
+/*商品分类页*/
+.category-top .search{border-bottom:1px solid #e8e8e8;position:fixed; left:0; top:0; right:0; z-index: 1; background:#F6F6F9}
+.menu-right-goods{position:fixed; left:0;top:5.7rem; bottom:0; overflow-y: scroll;}
+.menu-right-goods #loading{left:11rem; top:6.7rem;}
+.menu-left h2{text-align: center; height: 60px; line-height: 60px}
+.menu-right-top{background:#fff; position:inherit; margin-left:8.6rem; margin-top: 5.7rem; right:0; bottom:0; left: 8.6rem}
+.menu-right-goods{background:#fff; position:inherit; margin-left:8.6rem; right:0; bottom:0; left: 8.6rem}
+.menu-right-goods h5{font-size:1.3rem; color:#666; margin-top:1rem; margin-bottom:.4rem;}
+.menu-right-goods h5:first-child{margin-top:0;}
+.menu-right-goods ul{overflow: hidden;}
+.menu-right-goods ul li{width:100%; padding-bottom:1px;}
+.menu-right-goods ul li a{display:block; position: absolute; left:.3rem; top:.7rem; bottom:.7rem; right:.3rem;}
+.menu-right-goods ul li:nth-child(3n+1) a{left:0; right:.7rem;}
+.menu-right-goods ul li:nth-child(3n) a{right:0; left: .7rem;}
+.menu-right-goods ul li span{display:block;height:2.6rem; line-height: 2.6rem; overflow: hidden; text-align: center; font-size:1.4rem}
+.menu-right-goods .product-div img{ border:1px solid #F6F6F9;}
+.menu-right-goods .product-list-img{width:9.6rem; height: auto; float:left;}
+.mune-no-img img{display:none}
+.mune-no-img span{border:1px solid #efefef; color:#555; border-radius: 4px;}
+
+.menu-right-goods h4{font-size:1.2rem; line-height: 1.9rem;}
+.menu-right-goods .product-list-small .p-t-remark{padding-top:.4rem}
+
+
+
+
 /*=======================================
 		购物车页
   =======================================*/

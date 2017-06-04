@@ -21,6 +21,22 @@
       </tr>
 
       <tr id="measure_unit">
+        <td class="label">价格:</td>
+        <td>
+          <input type="text" name='category_price' value='{$cat_info.category_price}' size="12" placeholder="0.00" />
+        </td>
+      </tr>
+
+
+      <tr>
+        <td class="label">使用价格:</td>
+        <td>
+          <input type="radio" name="use_price" value="1" {if $cat_info.use_price neq 0} checked="true"{/if}/> {$lang.yes}
+          <input type="radio" name="use_price" value="0" {if $cat_info.use_price eq 0} checked="true"{/if} /> {$lang.no}
+        </td>
+      </tr>
+
+      <tr id="measure_unit">
         <td class="label">{$lang.measure_unit}:</td>
         <td>
           <input type="text" name='measure_unit' value='{$cat_info.measure_unit}' size="12" />

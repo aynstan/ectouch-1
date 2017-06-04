@@ -1,0 +1,17 @@
+
+
+	<section class="menu-right-goods padding-all j-content" data="2">
+		<ul id="j-product-box">
+			<li>
+				<div class="product-div">
+					<a class="product-div-link" href="/index.php?m=default&amp;c=goods&amp;a=index&amp;id=1&amp;u=0"></a>
+					<img class="product-list-img" src="http://test888.szdlife.com/data/assets/images/201706/goods_img/1_G_1496516176502.jpg">
+					<div class="product-text">
+						<h4>陈一飞</h4>
+						<p>描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述</p>
+					</div>
+				</div>
+			</li>
+			
+		</ul>
+	</section>

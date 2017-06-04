@@ -101,6 +101,8 @@ if ($_REQUEST['act'] == 'insert')
     $cat['style']        = !empty($_POST['style'])        ? trim($_POST['style'])        : '';
     $cat['is_show']      = !empty($_POST['is_show'])      ? intval($_POST['is_show'])    : 0;
     $cat['grade']        = !empty($_POST['grade'])        ? intval($_POST['grade'])      : 0;
+    $cat['category_price']= !empty($_POST['category_price'])? intval($_POST['category_price']):0;
+    $cat['use_price']    = !empty($_POST['use_price'])    ? intval($_POST['use_price'])  : 0;
     $cat['filter_attr']  = !empty($_POST['filter_attr'])  ? implode(',', array_unique(array_diff($_POST['filter_attr'],array(0)))) : 0;
 
     $cat['cat_recommend']  = !empty($_POST['cat_recommend'])  ? $_POST['cat_recommend'] : array();
@@ -276,6 +278,8 @@ if ($_REQUEST['act'] == 'update')
     $cat['show_in_nav']  = !empty($_POST['show_in_nav'])  ? intval($_POST['show_in_nav']): 0;
     $cat['style']        = !empty($_POST['style'])        ? trim($_POST['style'])        : '';
     $cat['grade']        = !empty($_POST['grade'])        ? intval($_POST['grade'])      : 0;
+    $cat['category_price']=!empty($_POST['category_price'])?intval($_POST['category_price']):0;
+    $cat['use_price']    = !empty($_POST['use_price'])    ? intval($_POST['use_price'])  : 0;
     $cat['filter_attr']  = !empty($_POST['filter_attr'])  ? implode(',', array_unique(array_diff($_POST['filter_attr'],array(0)))) : 0;
     $cat['cat_recommend']  = !empty($_POST['cat_recommend'])  ? $_POST['cat_recommend'] : array();
 
@@ -359,7 +363,11 @@ if ($_REQUEST['act'] == 'update')
                 $db->query($sql);
             }
         }
-
+        // 更新该分类下商品价格
+        if($cat['use_price'] && $cat['category_price']){
+            $sql = "UPDATE " . $ecs->table('goods') . " SET shop_price = " . $cat['category_price'] . " WHERE cat_id = ".$cat_id;
+            $db->query($sql);
+        }
         //更新首页推荐
         insert_cat_recommend($cat['cat_recommend'], $cat_id);
         /* 更新分类信息成功 */

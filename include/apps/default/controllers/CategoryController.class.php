@@ -40,6 +40,20 @@ class CategoryController extends CommonController
         $this->display('category_top_all.dwt', $cache_id);
     }
 
+    public function test(){
+        /* 页面的缓存ID */
+        $cache_id = sprintf('%X', crc32($_SERVER['REQUEST_URI'] . C('lang') . time()));
+        if (!ECTouch::view()->is_cached('category_top_all.dwt', $cache_id)) {
+            $category = model('Category')->get_cat_list($this->cat_id);
+            // echo "<pre>";var_dump($category);die();
+            $this->assign('category', $category);
+            /* 页面标题 */
+            $this->assign('page_title', L('catalog'));
+            $this->assign('id', 8);
+        }
+        $this->display('test.dwt');
+    }
+
     /**
      * 分类产品信息列表
      */

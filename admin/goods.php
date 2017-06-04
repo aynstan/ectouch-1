@@ -811,6 +811,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     }
 
     /* 处理商品数据 */
+    $catgory_id = empty($_POST['cat_id']) ? '' : intval($_POST['cat_id']);
     $shop_price = !empty($_POST['shop_price']) ? $_POST['shop_price'] : 0;
     $market_price = !empty($_POST['market_price']) ? $_POST['market_price'] : 0;
     $promote_price = !empty($_POST['promote_price']) ? floatval($_POST['promote_price'] ) : 0;
@@ -833,11 +834,17 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
 
     $goods_name_style = $_POST['goods_name_color'] . '+' . $_POST['goods_name_style'];
 
-    $catgory_id = empty($_POST['cat_id']) ? '' : intval($_POST['cat_id']);
     $brand_id = empty($_POST['brand_id']) ? '' : intval($_POST['brand_id']);
 
     $goods_thumb = (empty($goods_thumb) && !empty($_POST['goods_thumb_url']) && goods_parse_url($_POST['goods_thumb_url'])) ? htmlspecialchars(trim($_POST['goods_thumb_url'])) : $goods_thumb;
     $goods_thumb = (empty($goods_thumb) && isset($_POST['auto_thumb']))? $goods_img : $goods_thumb;
+
+    // 根据分类价格修改商品价格
+    $sql = "SELECT category_price, use_price FROM " . $ecs->table('category') . " WHERE cat_id = " . $catgory_id;
+    $cat_result = $db->getRow($sql);
+    if($cat_result['use_price']){
+        $shop_price = $cat_result['category_price'];
+    }
 
     /* 入库 */
     if ($is_insert)
