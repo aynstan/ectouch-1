@@ -40,18 +40,26 @@ class CategoryController extends CommonController
         $this->display('category_top_all.dwt', $cache_id);
     }
 
-    public function test(){
+    public function cat_goods(){
         /* 页面的缓存ID */
         $cache_id = sprintf('%X', crc32($_SERVER['REQUEST_URI'] . C('lang') . time()));
         if (!ECTouch::view()->is_cached('category_top_all.dwt', $cache_id)) {
+            $cat_name = model('Category')->get_cat_name($this->cat_id);
+
             $category = model('Category')->get_cat_list($this->cat_id);
             // echo "<pre>";var_dump($category);die();
+            $this->assign('cat_name', $cat_name);
             $this->assign('category', $category);
-            /* 页面标题 */
-            $this->assign('page_title', L('catalog'));
-            $this->assign('id', 8);
+            $this->assign('id', $category[0]['cat_id']);
         }
-        $this->display('test.dwt');
+        $size = 10;
+        $page = 1;
+
+
+        $goodslist = $this->category_get_goods($category[0]['cat_id'], $this->brand, $this->price_min, $this->price_max, $size, $page, $this->sort, $this->order, $this->keywords);
+        $this->assign('list', $goodslist);
+
+        $this->display('cat_goods.dwt');
     }
 
     /**
@@ -76,12 +84,47 @@ class CategoryController extends CommonController
             $page = I('page');
             $this->parameter();
             $goodslist = $this->category_get_goods($this->cat_id, $this->brand, $this->price_min, $this->price_max, $size, $page, $this->sort, $this->order, $this->keywords);
-            $count = $this->get_goods_count($this->cat_id, $this->brand, $this->price_min, $this->price_max);
+            $count = $this->get_goods_count($this->cat_id, $this->brand, $this->price_min, $this->price_max, $this->keywords);
             $count = ceil($count / $size);
             if ($this->price_max > 0) {
                 $count = $count - 1;
             }
             die(json_encode(array('list' => $goodslist, 'totalPage' => $count)));
+        }
+    }
+
+    /**
+     * ajax获取子分类
+     */
+    public function getAjaxGoods()
+    {
+        if (IS_AJAX) {
+            $size = 10;
+            $page = I('page');
+            $this->parameter();
+            if($this->cat_id){
+                $use_cat_price = model('category')->use_price($this->cat_id);
+
+                $this->assign('use_cat_price', $use_cat_price);
+
+                $goodslist = $this->category_get_goods($this->cat_id, $this->brand, $this->price_min, $this->price_max, $size, $page, $this->sort, $this->order, $this->keywords);
+                $count = $this->get_goods_count($this->cat_id, $this->brand, $this->price_min, $this->price_max, $this->keywords);
+                $count = ceil($count / $size);
+                if ($this->price_max > 0) {
+                    $count = $count - 1;
+                }
+
+                $this->assign('list', $goodslist);
+                $res['html'] = ECTouch::view()->fetch('library/ajaxgoodslist.lbi');
+                $res['totalPage'] = $count;
+                // $res['top_categories'] = ECTouch::view()->fetch('library/category.lbi');
+                die(json_encode($res));  
+            }else{
+                $res['html'] = '';
+                $res['totalPage'] = 1;
+                die(json_encode($res));
+            }
+
         }
     }
 
@@ -452,9 +495,10 @@ class CategoryController extends CommonController
         }
         $page = $page > 1 ? ($page - 1) * 10 : 0;
         /* 获得商品列表 */
-        $sql = 'SELECT g.goods_id, g.goods_name,g.market_price, g.goods_name_style, g.market_price, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, ' . "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, g.promote_price, g.goods_type, g.goods_number, " .
-            'g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb , g.goods_img, xl.sales_volume ' . 'FROM ' . $this->model->pre . 'goods AS g ' . ' LEFT JOIN ' . $this->model->pre . 'touch_goods AS xl ' . ' ON g.goods_id=xl.goods_id ' .
+        $sql = 'SELECT g.goods_id, g.goods_name,g.market_price, g.goods_name_style, g.market_price, g.is_new, g.is_best, g.is_hot, g.shop_price AS org_price, g.goods_brief, g.is_rent, g.rent_price, IFNULL(xl.sales_volume, 0) as sales_volume, ' . "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, g.promote_price, g.goods_type, g.goods_number, " .
+            'g.promote_start_date, g.promote_end_date, g.goods_brief, g.goods_thumb , g.goods_img ' . 'FROM ' . $this->model->pre . 'goods AS g ' . ' LEFT JOIN ' . $this->model->pre . 'touch_goods AS xl ' . ' ON g.goods_id=xl.goods_id ' .
             ' LEFT JOIN ' . $this->model->pre . 'member_price AS mp ' . "ON mp.goods_id = g.goods_id " . "WHERE $where GROUP BY g.goods_id ORDER BY $sort $order LIMIT $page , $size";
+
         $res = $this->model->query($sql);
         foreach ($res as $key => $val) {
             $res[$key]['url'] = url('goods/index', array('id' => $val['goods_id']));
@@ -465,7 +509,7 @@ class CategoryController extends CommonController
     }
 
     //获取商品总条数
-    private function get_goods_count($cat_id, $brand, $price_min, $price_max)
+    private function get_goods_count($cat_id, $brand, $price_min, $price_max, $keywords)
     {
         $where = "g.is_on_sale = 1 AND g.is_alone_sale = 1 AND " . "g.is_delete = 0 ";
         if ($cat_id !== 0) {
@@ -473,6 +517,9 @@ class CategoryController extends CommonController
         }
         if (!empty($brand) && $brand !== 0) {
             $where .= " AND g.brand_id = '" . $brand . "' ";
+        }
+        if (!empty($keywords)) {
+            $where .= $keywords;
         }
         if (isset($price_min) && !empty($price_max)) {
             $where .= " AND g.shop_price >= '" . $price_min . "' AND g.shop_price <= '" . $price_max . "'";

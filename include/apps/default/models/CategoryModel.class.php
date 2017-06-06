@@ -338,5 +338,20 @@ class CategoryModel extends BaseModel {
         return $cats['cat_image'];
     }
 
+    /**
+     * 获取分类名
+     */
+    function get_cat_name($cat_id){
+        $cat = $this->row("SELECT cat_name FROM ". $this->pre . "category WHERE cat_id = '$cat_id'");
+        return  $cat['cat_name'];
+    }
+
+    /**
+     * 获取分类名
+     */
+    function use_price($cat_id){
+        $cat = $this->row("SELECT use_price FROM ". $this->pre . "category WHERE cat_id = '$cat_id'");
+        return  $cat['use_price'];
+    }
 	
 }

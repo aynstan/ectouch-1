@@ -101,6 +101,26 @@
             <input type="button" value="{$lang.compute_by_mp}" onclick="marketPriceSetted()" />
             {$lang.require_field}</td>
           </tr>
+
+
+
+
+      <tr>
+        <td class="label">可以租用 :</td>
+        <td>
+          <input type="radio" name="is_rent" value="1" {if $goods.is_rent neq 0} checked="true"{/if}/> {$lang.yes}
+          <input type="radio" name="is_rent" value="0" {if $goods.is_rent eq 0} checked="true"{/if} /> {$lang.no}
+        </td>
+      </tr>
+
+      <tr>
+        <td class="label">租用价格 :</td>
+        <td>
+          <input type="text" name='rent_price' value='{$goods.rent_price}' size="12" placeholder="0.00" />
+        </td>
+      </tr>
+
+
           <!--/*DRP_START*/-->
             <tr>
                 <td class="label">{$lang.lab_shop_profit}</td>

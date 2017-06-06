@@ -513,7 +513,7 @@ transform: rotate(135deg);background:#fff; bottom:-.6rem; z-index: -1; left:50%;
 .product-one-list li .p-price{font-size:1.5rem;}
 
 /*排序栏*/
-.product-sequence{text-align: center; height:4.6rem; line-height:4.6rem; font-size:1.5rem; background:#fff; width: 100%;}
+.product-sequence{text-align: center; height:4.6rem; line-height:4.6rem; font-size:1.8rem; background:#fff;}
 .product-sequence a:hover,.product-sequence a{text-decoration: none; color:#444}
 .product-sequence a.active{color:#1CBB7F;}
 .product-sequence .icon-xiajiantou{margin-left: .1rem;  position: relative; font-size:1.2rem;  transition: 0.2s ease;}
@@ -737,7 +737,7 @@ a.a-sequence .iconfont.icon-icon-square:before{font-size:3.2rem;}
 .menu-right #loading{left:11rem; top:6.7rem;}
 
 .menu-left{background:#F6F6F9;}
-.menu-left ul li{padding:1.3rem .8rem; box-sizing: border-box;  font-size:1.5rem; width:8.6rem; text-align: center;}
+.menu-left ul li{padding:1.3rem 0; box-sizing: border-box;  font-size:1.4rem; width:8.6rem; text-align: center;}
 .menu-left ul li.active{background:#fff; position:relative;color: #1CBB7F;}
 .menu-left ul li.active:before{content: " "; position: absolute;display: block; width:2px; height:100%; background:#1CBB7F; top:0; left:0;}
 .menu-right{background:#fff; position:inherit; margin-left:8.6rem; margin-top: 5.7rem; right:0; bottom:0; left: 8.6rem}
@@ -775,14 +775,15 @@ a.a-sequence .iconfont.icon-icon-square:before{font-size:3.2rem;}
 .menu-right-goods ul li a{display:block; position: absolute; left:.3rem; top:.7rem; bottom:.7rem; right:.3rem;}
 .menu-right-goods ul li:nth-child(3n+1) a{left:0; right:.7rem;}
 .menu-right-goods ul li:nth-child(3n) a{right:0; left: .7rem;}
-.menu-right-goods ul li span{display:block;height:2.6rem; line-height: 2.6rem; overflow: hidden; text-align: center; font-size:1.4rem}
+.menu-right-goods ul li span{display:block; overflow: hidden; font-size:1.4rem}
 .menu-right-goods .product-div img{ border:1px solid #F6F6F9;}
 .menu-right-goods .product-list-img{width:9.6rem; height: auto; float:left;}
 .mune-no-img img{display:none}
 .mune-no-img span{border:1px solid #efefef; color:#555; border-radius: 4px;}
 
-.menu-right-goods h4{font-size:1.2rem; line-height: 1.9rem;}
+.menu-right-goods h4{font-size:1.7rem; line-height: 1.9rem;}
 .menu-right-goods .product-list-small .p-t-remark{padding-top:.4rem}
+.menu-right-goods .product-text{ margin-left: 10rem  }
 
 
 
