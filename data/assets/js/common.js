@@ -54,7 +54,8 @@ function addToCart(goodsId, parentId) {
     goods.parent = (typeof (parentId) == "undefined") ? 0 : parseInt(parentId);
 
     $.post('index.php?m=default&c=flow&a=add_to_cart', {
-        goods: $.toJSON(goods)
+        goods: JSON.stringify(goods) 
+        // goods: $.toJSON(goods)
     }, function(data) {
         addToCartResponse(data);
     }, 'json');
@@ -750,7 +751,8 @@ function addPackageToCart(packageId) {
     package_info.number = number;
 
     $.post('index.php?m=default&c=flow&a=add_package_to_cart', {
-        package_info: $.toJSON(package_info)
+        // package_info: $.toJSON(package_info)
+        package_info: JSON.stringify(package_info) 
     }, function(data) {
         addPackageToCartResponse(data);
     }, 'json');
@@ -970,7 +972,8 @@ function submit_div(goods_id, parentId) {
     goods.parent = (typeof (parentId) == "undefined") ? 0 : parseInt(parentId);
 
     $.post('index.php?m=default&c=flow&a=add_to_cart', {
-        goods: $.toJSON(goods)
+        // goods: $.toJSON(goods)
+        goods: JSON.stringify(goods) 
     }, function(data) {
         addToCartResponse(data);
     }, 'json');
@@ -1029,7 +1032,8 @@ function addToCart_quick(goodsId, parentId) {
     goods.number = number;
     goods.parent = (typeof (parentId) == "undefined") ? 0 : parseInt(parentId);
     $.post('index.php?m=default&c=flow&a=add_to_cart', {
-        goods: $.toJSON(goods)
+        // goods: $.toJSON(goods)
+        goods: JSON.stringify(goods) 
     }, function(data) {
         addToCartResponse_quick(data);
     }, 'json');

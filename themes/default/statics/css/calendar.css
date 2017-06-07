@@ -1,0 +1,41 @@
+
+.con-calendar {
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	border:solid 1px;
+	margin-bottom:20px;
+}
+
+.has-day div{
+	float:right; 
+	line-height:26px; 
+	color:white
+}
+
+.has-day span{
+	height:30px; 
+	padding:2px
+}
+
+/*已过期*/
+.has-day .unactive{
+	background:gray
+}
+/*可选择*/
+.has-day .active{
+	background:#1cbb7f
+}
+/*用户已经预约*/
+.has-day .u-choice{
+	background:red
+}
+/*后台添加*/
+.has-day .s-choice{
+	background:orange
+}
+
+/*用户操作*/
+.has-day .p-choice{
+	background:green
+}

@@ -199,26 +199,54 @@ function calendar_core(val,obj,date_active_color,line_height){
 		pane.css("float","left");
 		obj.find(".calendar_dates").append(pane);
 	}
-	
+	// alert(today.getMonth());
 	for(var i = start; i < end; i++){
 		var pane = $("<div></div>");
 		pane.addClass("calendar_pane");
+		pane.addClass("has-day");
+		pane.attr("id", year+"-"+month+"-"+(i-start+1));
 		pane.width(pane_height);
 		pane.height(line_height);
 		pane.css("line-height",line_height + "px");
 		pane.css("float","left");
 		pane.css("text-align","center");
 		pane.text(i - start + 1);
-		// if(year == today.getFullYear() && (month == today.getMonth() + 1) && i-start+1 == date){
-		// 	pane.css("background-color",date_active_color);
-		// }
+		if(year == today.getFullYear() && (month == today.getMonth() + 1) && i-start+1 == date){
+			pane.addClass("today");
+		}
 		obj.find(".calendar_dates").append(pane);
 	}
 
 
-	// 遍历
+	// 如果是当月
+	if(year == today.getFullYear() && (month == today.getMonth() + 1)){
+		get_use_info(year, month, obj);
+		var today = "#"+year+"-"+month+"-"+date;
+		obj.find('.today').prevAll(".has-day").append('<div><span class="unactive a">中</span></br><span class="unactive p">晚</span></div>');
+		obj.find(".today").append('<div><span class="unactive a">中</span></br><span class="unactive p">晚</span></div>');
+		obj.find('.today').nextAll(".has-day").append('<div><span class="active a">中</span></br><span class="active p">晚</span></div>');
+	}else if(year < today.getFullYear() || (year == today.getFullYear() && month <= today.getMonth())){		// 如果是往月
+		obj.find(".has-day").append('<div><span class="unactive a">中</span></br><span class="unactive p">晚</span></div>');
+	}else{
+		get_use_info(year, month, obj);
+		obj.find(".has-day").append('<div><span class="active a">中</span></br><span class="active p">晚</span></div>');
+	}
 
-	obj.find(".calendar_pane").append('<div style="float:right; line-height:26px; color:white"><span style="height:30px; padding:2px;background:green">中</span></br><span style="height:30px; padding:2px;background:green">晚</span></div>');
+
+	obj.find(".has-day span").click(function(e){
+		var newObj = $(this);
+		if(newObj.hasClass("u-choice")||newObj.hasClass("s-choice")||newObj.hasClass("unactive")){
+			return;
+		}
+		obj.find('.p-choice').addClass('active').removeClass('p-choice');
+		newObj.addClass('p-choice').removeClass('active');
+		var date = newObj.parent().parent().attr("id");
+		if(newObj.hasClass("a")){
+			obj.find("#date").val(date+"#a");
+		}else{
+			obj.find("#date").val(date+"#b");
+		}
+	});
 }
 
 //判断数组array中是否包含元素obj的函数，包含则返回true，不包含则返回false
@@ -241,7 +269,26 @@ function isLeapYear(year){
 	return false;
 }
 
-// 获取某个商品某一月预定信息
-function get_reserve(year, month, goods_id){
+// 获取该月预约信息
+function get_use_info(year, month, obj){
+	var url = 'index.php?m=default&c=goods&a=reserve';
+	$.get(url, {
+			'id': goodsId,
+			'year': year,
+			'month': month
+		}, function(data) {
+			for(i=0; i<data.length; i++){
+				console.info(data[i].type);
+				if(data[i].type == '1'){
+					var choice = "u-choice";
+				}else{
+					var choice = "s-choice";
+				}
+				var temp = "#"+data[i].reserve_date+" ."+data[i].time_slot;
+				if(obj.find(temp).hasClass('active')){
+					obj.find(temp).removeClass('active').addClass(choice);
+				}
+			}
 
+		}, 'json');
 }

@@ -353,5 +353,13 @@ class CategoryModel extends BaseModel {
         $cat = $this->row("SELECT use_price FROM ". $this->pre . "category WHERE cat_id = '$cat_id'");
         return  $cat['use_price'];
     }
+
+    /**
+     * 获取上级分类id
+     */
+    function get_parent_id($cat_id){
+        $cat = $this->row("SELECT parent_id FROM ". $this->pre . "category WHERE cat_id = '$cat_id'");
+        return  $cat['parent_id'];
+    }
 	
 }

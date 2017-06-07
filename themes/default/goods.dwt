@@ -1,5 +1,6 @@
 <!-- #BeginLibraryItem "/library/new_page_header.lbi" -->
 <!-- #EndLibraryItem -->
+<link rel="stylesheet" href="__TPL__/statics/css/calendar.css" />
 <div class="con">
 	<!--style="margin-bottom: 50px;"-->
 	<div class="goods">
@@ -34,28 +35,13 @@
 			<div class="swiper-pagination"></div>
 		</div>
 
-
-<style>
-#test {
-	width:100%;
-	height:auto;
-	overflow:hidden;
-	border:solid 1px;
-	margin-bottom:20px;
-}
-</style>
-
-<div id="test">
-</div>
-
-
-
-
-
-
-
-
-
+		<!--选择日期-->
+		{if $use_calendar}
+		<div id="test" class="con-calendar">
+			<input type="hidden" name="date" id="date" value="">
+		</div>
+		{/if}
+		<!--选择日期end-->
 
 		<!--商品属性介绍-->
 		<div class="goods-info">
@@ -272,6 +258,7 @@
 	}
 	/*倒计时*/
 	var goods_id = {$goods_id};
+	var use_calendar = {$use_calendar};
 	var goodsattr_style = 1;
 	var gmt_end_time = 0;
 	var day = "天";
@@ -289,17 +276,18 @@ $(function() {
   catch (e) {}
 
 
-
-	//在id=test的DIV中显示日历
-	calendar_init($("#test"),{
-		title_color:"black",
-		title_bg_color:"",
-		day_color:"black",
-		day_bg_color:"",
-		date_bg_color:"",
-		date_color:"black",
-		date_active_color:"red"
-	});
+  	if(use_calendar){
+		//在id=test的DIV中显示日历
+		calendar_init($("#test"),{
+			title_color:"black",
+			title_bg_color:"",
+			day_color:"black",
+			day_bg_color:"",
+			date_bg_color:"",
+			date_color:"black",
+			date_active_color:"red"
+		});
+  	}
 });
 
 	function back_goods_number() {

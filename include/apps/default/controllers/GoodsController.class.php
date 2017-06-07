@@ -36,6 +36,17 @@ class GoodsController extends CommonController
     {
         // 获得商品的信息
         $goods = model('Goods')->get_goods_info($this->goods_id);
+
+
+        // 是否使用日历预约控件
+        $parent_id = model('category')->get_parent_id($goods['cat_id']);
+        $use_calendar = 0;
+        // echo "<pre>";
+        // var_dump($parent);die();
+        if(in_array($goods['cat_id'], array(1, 4, 5)) || in_array($parent_id, array(1, 4, 5))){
+            $use_calendar = 1;
+        }
+        $this->assign('use_calendar', $use_calendar);
         //购物车商品数量
         $cart_goods = insert_cart_info_number();
         $this->assign('seller_cart_total_number', $cart_goods);
@@ -203,6 +214,24 @@ class GoodsController extends CommonController
         $this->assign('pager', $cmt->page);
         $this->assign('title', L('goods_comment'));
         $this->display('goods_comment_list.dwt');
+    }
+
+    /**
+     * 商品预约信息
+     */
+    public function reserve(){
+        $year = $_GET['year'];
+        $month = $_GET['month'];
+        $date_start = $year."-".$month."-1";
+        $date_end = $year."-".$month."-31";
+        $where = "WHERE type != '0' AND reserve_date between '$date_start' AND '$date_end'";
+        $sql = "SELECT * FROM " . $this->model->pre . "touch_goods_reserve ".$where;
+        // echo $sql;die();
+        $result = $this->model->query($sql);
+        foreach ($result as $key => $value) {
+            $result[$key]['reserve_date'] = date("Y-n-j", strtotime($value['reserve_date']));
+        }
+        die(json_encode($result));
     }
 
     /**
