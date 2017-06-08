@@ -56,16 +56,28 @@
   
 			<section class="goods-price padding-all b-color-f">
 				<p class="p-price">
-					<span class="t-first">
-				<!--{if $goods.is_promote and $goods.gmt_end_time } 促销-->
-				{$goods.promote_price}
-				<!--{else}-->
-				{$goods.shop_price_formated}
-				<!--{/if}--></span>
-					<!-- <em class="em-promotion">5.8折</em></p> -->
-				<p class="p-market">
-					市场价<del><!-- {if $cfg.show_marketprice} 市场价格-->{$goods.market_price} <!-- {/if} --></del>
-				</p>
+
+
+
+					{if $price_info}
+
+						<span class="t-first">
+						{foreach from=$price_info item="price_info" name="price_info"}
+							{$price_info.label}：{$price_info.format_price}</br>
+						{/foreach}
+						</span>
+
+					{else}
+
+						<span class="t-first">
+						<!--{if $goods.is_promote and $goods.gmt_end_time } 促销-->
+						{$goods.promote_price}
+						<!--{else}-->
+						{$goods.shop_price_formated}
+						<!--{/if}--></span>
+						<!-- <em class="em-promotion">5.8折</em></p> -->
+					{/if}
+
 				<p class=" dis-box g-p-tthree m-top06">
 					<span class="box-flex text-left">{$lang.sort_sales}：{$sales_count}</span>
 					<span class="box-flex text-right">库存 {$goods.goods_number}</span>
@@ -141,7 +153,7 @@
 										<!-- {foreach from=$spec.values item=value key=key} -->
 										<li class="ect-select dis-flex fl" >
 											<input type="radio" name="spec_{$spec_key}" value="{$value.id}" id="spec_value_{$value.id}" {if $key eq 0}checked{/if} onclick="changePrice()" />
-											<label class="ts-1 {if $key eq 0}active{/if}" for="spec_value_{$value.id}">{$value.label}</label>
+											<label class="ts-2 {if $key eq 0}active{/if}" for="spec_value_{$value.id}">{$value.label}</label>
 										</li>
 										 <!-- {/foreach} -->
 									</ul>
@@ -243,7 +255,7 @@
 </div>
 
 <script src="__TPL__/js/calendar/jquery-2.1.1.min.js"></script>
-<script src="__TPL__/js/calendar/calendar-3.1.js?v=0002"></script>
+<script src="__TPL__/js/calendar/calendar-3.1.js?v=0003"></script>
 
 
 <script type="text/javascript" src="__TPL__/js/lefttime.js"></script>

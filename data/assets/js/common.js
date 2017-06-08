@@ -46,6 +46,18 @@ function addToCart(goodsId, parentId) {
 
         quick = 1;
     }
+    
+    goods.quick = '';
+    // 需要预约日期
+    if(use_calendar){
+        date = $("#date").val();
+        if(date == ''){
+            alert('请选择日期');
+            return;
+        }else{
+            goods.date = date;
+        }
+    }
 
     goods.quick = quick;
     goods.spec = spec_arr;
@@ -1024,6 +1036,17 @@ function addToCart_quick(goodsId, parentId) {
         }
 
         quick = 1;
+    }
+
+    goods.quick = '';
+    if(use_calendar){
+        date = $("#date").val();
+        if(date == ''){
+            alert('请选择日期');
+            return;
+        }else{
+            goods.date = date;
+        }
     }
 
     goods.quick = quick;

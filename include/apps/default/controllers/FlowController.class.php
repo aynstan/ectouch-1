@@ -29,6 +29,8 @@ class FlowController extends CommonController {
 
         // 取得商品列表，计算合计
         $cart_goods = model('Order')->get_cart_goods();
+        // echo "<pre>";
+        // var_dump($cart_goods);die();
         $this->assign('goods_list', $cart_goods ['goods_list']);
         $this->assign('total', $cart_goods ['total']);
 
@@ -210,7 +212,7 @@ class FlowController extends CommonController {
             $result ['message'] = L('invalid_number');
         } else {
             // 更新：添加到购物车
-            if (model('Order')->addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent)) {
+            if (model('Order')->addto_cart($goods->goods_id, $goods->number, $goods->spec, $goods->parent, $goods->date)) {
                 if (C('cart_confirm') > 2) {
                     $result ['message'] = '';
                 } else {
@@ -1227,7 +1229,7 @@ class FlowController extends CommonController {
         $order ['order_id'] = $new_order_id;
 
         /* 插入订单商品 */
-        $sql = "INSERT INTO " . $this->model->pre . "order_goods( " . "order_id, goods_id, goods_name, goods_sn, product_id, goods_number, market_price, " . "goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, goods_attr_id) " . " SELECT '$new_order_id', goods_id, goods_name, goods_sn, product_id, goods_number, market_price, " . "goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, goods_attr_id " . " FROM " . $this->model->pre . "cart WHERE session_id = '" . SESS_ID . "' AND rec_type = '$flow_type'";
+        $sql = "INSERT INTO " . $this->model->pre . "order_goods( " . "order_id, goods_id, goods_name, goods_sn, product_id, goods_number, market_price, " . "goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, goods_attr_id, goods_reserve_id) " . " SELECT '$new_order_id', goods_id, goods_name, goods_sn, product_id, goods_number, market_price, " . "goods_price, goods_attr, is_real, extension_code, parent_id, is_gift, goods_attr_id, goods_reserve_id " . " FROM " . $this->model->pre . "cart WHERE session_id = '" . SESS_ID . "' AND rec_type = '$flow_type'";
         $this->model->query($sql);
         /* 修改拍卖活动状态 */
         if ($order ['extension_code'] == 'auction') {

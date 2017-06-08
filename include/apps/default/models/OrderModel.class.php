@@ -438,7 +438,7 @@ class OrderModel extends BaseModel {
      * @param   integer $parent     基本件
      * @return  boolean
      */
-    function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0) {
+    function addto_cart($goods_id, $num = 1, $spec = array(), $parent = 0, $reserve='') {
         ECTouch::err()->clean();
         $_parent_id = $parent;
 
@@ -620,6 +620,13 @@ class OrderModel extends BaseModel {
             $num -= $parent['goods_number'];
         }
 
+        $reserve_id = 0;
+        if($reserve){
+            // 如果需要预约日期
+            $reserve_id = $this->add_reserve($goods_id, $reserve);
+
+        }
+
         /* 如果数量不为0，作为基本件插入 */
         if ($num > 0) {
             /* 检查该商品是否已经存在在购物车中 */
@@ -633,6 +640,11 @@ class OrderModel extends BaseModel {
 
             if ($row) { //如果购物车已经有此物品，则更新
                 $num += $row['goods_number'];
+
+                if($reserve_id){
+                    $num = 1;   // 预约商品一次只能下单一个
+                }
+
                 if (model('GoodsBase')->is_spec($spec) && !empty($prod)) {
                     $goods_storage = $product_info['product_number'];
                 } else {
@@ -641,7 +653,7 @@ class OrderModel extends BaseModel {
                 if (C('use_storage') == 0 || $num <= $goods_storage) {
                     $goods_price = model('GoodsBase')->get_final_price($goods_id, $num, true, $spec);
                     $sql = "UPDATE " . $this->pre . "cart SET goods_number = '$num'" .
-                            " , goods_price = '$goods_price'" .
+                            " , goods_price = '$goods_price', goods_reserve_id = '$reserve_id' " .
                             " WHERE session_id = '" . SESS_ID . "' AND goods_id = '$goods_id' " .
                             " AND parent_id = 0 AND goods_attr = '" . $this->get_goods_attr_info($spec) . "' " .
                             " AND extension_code <> 'package_buy' " .
@@ -654,9 +666,15 @@ class OrderModel extends BaseModel {
                 }
             } else { //购物车没有此物品，则插入
                 $goods_price = model('GoodsBase')->get_final_price($goods_id, $num, true, $spec);
+
+                if($reserve_id){
+                    $num = 1;   // 预约商品一次只能下单一个
+                }
+
                 $parent['goods_price'] = max($goods_price, 0);
                 $parent['goods_number'] = $num;
                 $parent['parent_id'] = 0;
+                $parent['goods_reserve_id'] = $reserve_id;
                 $this->table = 'cart';
                 $this->insert($parent);
             }
@@ -678,6 +696,45 @@ class OrderModel extends BaseModel {
                 "cart WHERE session_id = '" . SESS_ID . "' AND rec_type = '$type'";
         $this->query($sql);
     }
+
+    /**
+     * 插入预约信息
+     * @param   int     $type   类型：默认普通商品
+     */
+    function add_reserve($goods_id, $reserve) {
+        $reserve = explode('#', $reserve);
+        $data['reserve_date'] = $reserve[0];
+        $data['time_slot'] = $reserve[1];
+
+        $sql = "INSERT INTO " . $this->pre . "touch_goods_reserve VALUES ('', '$goods_id', '$data[reserve_date]', '$data[time_slot]', '0')";
+        
+        $this->query($sql);
+        $reserve_id = M()->insert_id();
+        return $reserve_id;
+    }
+
+    /**
+     * 修改预约信息
+     * @param   int     $type   类型：默认普通商品
+     */
+    function update_reserve($order_id) {
+
+        $sql = "SELECT goods_reserve_id FROM " . $this->pre . "order_goods WHERE order_id = $order_id AND goods_reserve_id != 0";
+        $result = $this->query($sql);
+        $data = array();
+        foreach ($result as $key => $value) {
+            $data[] = $value['goods_reserve_id'];
+        }
+        if($data){
+            $data = implode(",", $data);
+
+            $sql = "UPDATE " . $this->pre . "touch_goods_reserve  SET type = '1' WHERE rec_id in ($data)";
+            
+            $this->query($sql);
+        }
+    }
+
+
 
     /**
      * 获得指定的商品属性
@@ -973,6 +1030,18 @@ class OrderModel extends BaseModel {
             //获取库存
             $res = $this->row("SELECT `goods_number` FROM " . $this->pre . "goods WHERE `goods_id`='{$row['goods_id']}'");
             $row['goods_max_number'] = $res['goods_number'];
+
+            // 获取预约时间
+            if($row['goods_reserve_id'])
+            {
+                $sql = "SELECT * FROM " . $this->pre . "touch_goods_reserve WHERE rec_id = $row[goods_reserve_id]";
+                $row['reserve'] = $this->row($sql);
+                if($row['reserve']['time_slot'] == 'a'){
+                    $row['reserve_str'] = $row['reserve']['reserve_date'] ." 上午";
+                }else{
+                    $row['reserve_str'] = $row['reserve']['reserve_date'] ." 下午";
+                }
+            }
             $goods_list[] = $row;
         }
         $total['goods_amount'] = $total['goods_price'];

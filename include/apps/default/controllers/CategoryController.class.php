@@ -504,6 +504,10 @@ class CategoryController extends CommonController
             $res[$key]['url'] = url('goods/index', array('id' => $val['goods_id']));
 			$res[$key]['goods_img'] = get_image_path($val['goods_id'], $val['goods_img']);
 			$res[$key]['goods_thumb'] = get_image_path($val['goods_id'], $val['goods_thumb']);
+            $properties = model('Goods')->get_goods_properties($val['goods_id']);
+            if($properties['spe']){
+                $res[$key]['spe'] = $properties['spe'][2]['values'];
+            }
         }
         return $res;
     }

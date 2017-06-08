@@ -32,15 +32,21 @@
           </dl>
         </div>
         <div class="ect-margin-tb ect-margin-bottom0 ect-clear-over flow-num-del"> 
-        <!-- {if $goods.goods_id gt 0 && $goods.is_gift eq 0 && $goods.parent_id eq 0} 普通商品可修改数量 -->
-          <div class="input-group pull-left wrap"> <span class="input-group-addon" onClick="change_goods_number('1',{$goods.rec_id})" >-</span>
-            <input type="hidden" id="back_number{$goods.rec_id}" value="{$goods.goods_number}" />
-            <input type="text" class="form-num form-contro"  name="{$goods.rec_id}" id="goods_number{$goods.rec_id}" autocomplete="off" value="{$goods.goods_number}" onFocus="back_goods_number({$goods.rec_id})"  onblur="change_goods_number('2',{$goods.rec_id})" />
-            <span class="input-group-addon" onClick="change_goods_number('3',{$goods.rec_id})">+</span> </div>
-         
-         <!-- {else} -->
-          	<input type="text" class="txtnum" readonly value="{$goods.goods_number}"/>
-          <!-- {/if} --> 
+        <!-- {if $goods.goods_reserve_id eq 0} 非预约-->
+          <!-- {if $goods.goods_id gt 0 && $goods.is_gift eq 0 && $goods.parent_id eq 0} 普通商品可修改数量 -->
+            <div class="input-group pull-left wrap"> <span class="input-group-addon" onClick="change_goods_number('1',{$goods.rec_id})" >-</span>
+              <input type="hidden" id="back_number{$goods.rec_id}" value="{$goods.goods_number}" />
+              <input type="text" class="form-num form-contro"  name="{$goods.rec_id}" id="goods_number{$goods.rec_id}" autocomplete="off" value="{$goods.goods_number}" onFocus="back_goods_number({$goods.rec_id})"  onblur="change_goods_number('2',{$goods.rec_id})" />
+              <span class="input-group-addon" onClick="change_goods_number('3',{$goods.rec_id})">+</span> </div>
+           
+           <!-- {else} -->
+            	<input type="text" class="txtnum" readonly value="{$goods.goods_number}"/>
+            <!-- {/if} --> 
+
+        <!-- {else} -->
+          {$goods.reserve_str}
+
+        <!-- {/if} --> 
            <div class="pull-right flow-del text-center"> <a href="javascript:if (confirm('{$lang.drop_goods_confirm}')) location.href='{:url('flow/drop_goods',array('id'=>$this->_var['goods']['rec_id']))}';" style="padding: 2px 5px;">{$lang.drop}</a> </div>
         </div>
       </li>

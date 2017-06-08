@@ -26,12 +26,18 @@
 				<img class="product-list-img" src="{$vo.goods_img}" />
 
 				<div class="product-text">
-					<h4>{$vo.goods_name}</h4>
-						<p class="dis-box p-t-remark"><span class="box-flex">购买价格：￥{$vo.shop_price}元</span></p>
-					{if $vo.is_rent}
-						<p class="dis-box p-t-remark"><span class="box-flex">租赁价格：￥{$vo.rent_price}元/次</span></p>
+
+						<h4>{$vo.goods_name}</h4>
+
+					{if $vo.spe}
+					
+						{foreach from=$vo.spe item="price_info" name="price_info"}
+							<p class="dis-box p-t-remark"><span class="box-flex">{$price_info.label}：{$price_info.format_price}</span></p>
+						{/foreach}
+
 					{else}
-						<p class="dis-box p-t-remark"><span class="box-flex">库存：{$vo.goods_number}</span></p>
+							<p class="dis-box p-t-remark"><span class="box-flex">价格：￥{$vo.shop_price}元</span></p>
+							<p class="dis-box p-t-remark"><span class="box-flex">库存：{$vo.goods_number}</span></p>
 					{/if}
 						<p class="dis-box p-t-remark"><span class="box-flex">销量：{$vo.sales_volume}</span></p>
 				</div>

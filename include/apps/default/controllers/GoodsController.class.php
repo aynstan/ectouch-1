@@ -39,7 +39,7 @@ class GoodsController extends CommonController
 
 
         // 是否使用日历预约控件
-        $parent_id = model('category')->get_parent_id($goods['cat_id']);
+        $parent_id = model('Category')->get_parent_id($goods['cat_id']);
         $use_calendar = 0;
         // echo "<pre>";
         // var_dump($parent);die();
@@ -83,6 +83,11 @@ class GoodsController extends CommonController
             $this->assign('properties', $properties ['pro']);
             // 商品规格
             $this->assign('specification', $properties ['spe']);
+            if($properties ['spe']){
+                // var_dump($properties['spe'][2]['values']);die();
+                $this->assign('is_spe', 1);
+                $this->assign("price_info", $properties['spe'][2]['values']);
+            }
             // 相同属性的关联商品
             $this->assign('attribute_linked', model('Goods')->get_same_attribute_goods($properties));
             // 关联商品
@@ -224,8 +229,9 @@ class GoodsController extends CommonController
         $month = $_GET['month'];
         $date_start = $year."-".$month."-1";
         $date_end = $year."-".$month."-31";
-        $where = "WHERE type != '0' AND reserve_date between '$date_start' AND '$date_end'";
+        $where = "WHERE goods_id = $this->goods_id AND type != '0' AND reserve_date between '$date_start' AND '$date_end'";
         $sql = "SELECT * FROM " . $this->model->pre . "touch_goods_reserve ".$where;
+        echo $sql;die();
         // echo $sql;die();
         $result = $this->model->query($sql);
         foreach ($result as $key => $value) {

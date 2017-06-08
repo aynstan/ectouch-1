@@ -244,7 +244,7 @@ function calendar_core(val,obj,date_active_color,line_height){
 		if(newObj.hasClass("a")){
 			obj.find("#date").val(date+"#a");
 		}else{
-			obj.find("#date").val(date+"#b");
+			obj.find("#date").val(date+"#p");
 		}
 	});
 }
