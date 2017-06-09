@@ -737,6 +737,8 @@ class UsersModel extends BaseModel {
                 model('Order')->change_order_goods_storage($order['order_id'], false, 1);
             }
 
+            model('Order')->update_reserve($order_id, '3');
+            
             /* 修改订单 */
             $arr = array(
                 'bonus_id' => 0,

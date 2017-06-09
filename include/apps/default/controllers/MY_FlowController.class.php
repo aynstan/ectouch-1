@@ -283,7 +283,7 @@ class MY_FlowController extends FlowController {
         $this->model->query($sql);
 
         // 更新预约表信息
-        model('Order')->update_reserve($new_order_id);
+        model('Order')->update_reserve($new_order_id, '1');
         // 更新佣金信息
         model('Sale')->update_order_sale($new_order_id);
 

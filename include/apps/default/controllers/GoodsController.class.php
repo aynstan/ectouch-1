@@ -229,10 +229,8 @@ class GoodsController extends CommonController
         $month = $_GET['month'];
         $date_start = $year."-".$month."-1";
         $date_end = $year."-".$month."-31";
-        $where = "WHERE goods_id = $this->goods_id AND type != '0' AND reserve_date between '$date_start' AND '$date_end'";
+        $where = "WHERE goods_id = $this->goods_id AND type != '0' AND type != '3' AND reserve_date between '$date_start' AND '$date_end'";
         $sql = "SELECT * FROM " . $this->model->pre . "touch_goods_reserve ".$where;
-        echo $sql;die();
-        // echo $sql;die();
         $result = $this->model->query($sql);
         foreach ($result as $key => $value) {
             $result[$key]['reserve_date'] = date("Y-n-j", strtotime($value['reserve_date']));

@@ -211,7 +211,11 @@
     <td><div align="right">{$goods.formated_goods_price}</div></td>
     <td><div align="right">{$goods.goods_number}
     </div></td>
-    <td>{$goods.goods_attr|nl2br}</td>
+    {if $goods.goods_reserve_id}
+      <td>{$goods.reserve}</td>
+    {else}
+      <td>{$goods.goods_attr|nl2br}</td>
+    {/if}
     <td><div align="right">{$goods.storage}</div></td>
     <td><div align="right">{$goods.formated_subtotal}</div></td>
   </tr>

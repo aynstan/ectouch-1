@@ -347,6 +347,12 @@ elseif ($_REQUEST['act'] == 'info')
             $row['package_goods_list'] = get_package_goods($row['goods_id']);
         }
 
+        // 如果是预约
+        if($row['goods_reserve_id']){
+            $row['reserve'] = get_reserve($row['goods_reserve_id']);
+            // var_dump($reserve);die();
+        }
+
         $goods_list[] = $row;
     }
 
@@ -6590,5 +6596,19 @@ function get_site_root_url()
 {
     return 'http://' . $_SERVER['HTTP_HOST'] . str_replace('/' . ADMIN_PATH . '/order.php', '', PHP_SELF);
 
+}
+
+/**
+ * 获取预约信息
+ */
+function get_reserve($rec_id){
+    $sql = "SELECT * FROM " . $GLOBALS['ecs']->table('touch_goods_reserve') . " WHERE rec_id = '$rec_id'";
+    $data = $GLOBALS['db']->getRow($sql);
+    if($data['time_slot'] == 'a'){
+        $data_str = $data['reserve_date']. " 上午";
+    }else{
+        $data_str = $data['reserve_date']. " 下午";
+    }
+    return $data_str;
 }
 ?>

@@ -171,7 +171,7 @@ class CommonController extends BaseController
             }
         }
         
-        // search 关键词
+        // // search 关键词
         $search_keywords = C('search_keywords');
         if (!empty($search_keywords) && is_string($search_keywords)) {
             $keywords = explode(',', $search_keywords);
@@ -188,7 +188,7 @@ class CommonController extends BaseController
             $this->assign('search_histroy', $histroy_list);
         }
 
-        // 模板替换
+        // // 模板替换
         defined('__TPL__') or define('__TPL__', __ROOT__ . '/themes/' . C('template'));
         $stylename = C('stylename');
         if (! empty($stylename)) {
@@ -197,7 +197,7 @@ class CommonController extends BaseController
             $this->assign('ecs_css_path', __ROOT__ . '/themes/' . C('template') . '/css/style.css');
         }
 
-        // 设置parent_id
+        // // 设置parent_id
         session('parent_id',$_SESSION['user_id'] ? 0 : $_GET['u'] ? $_GET['u'] : 0);
     }
     

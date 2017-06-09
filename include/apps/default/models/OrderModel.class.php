@@ -717,7 +717,7 @@ class OrderModel extends BaseModel {
      * 修改预约信息
      * @param   int     $type   类型：默认普通商品
      */
-    function update_reserve($order_id) {
+    function update_reserve($order_id, $type = '0') {
 
         $sql = "SELECT goods_reserve_id FROM " . $this->pre . "order_goods WHERE order_id = $order_id AND goods_reserve_id != 0";
         $result = $this->query($sql);
@@ -728,7 +728,7 @@ class OrderModel extends BaseModel {
         if($data){
             $data = implode(",", $data);
 
-            $sql = "UPDATE " . $this->pre . "touch_goods_reserve  SET type = '1' WHERE rec_id in ($data)";
+            $sql = "UPDATE " . $this->pre . "touch_goods_reserve  SET type = '$type' WHERE rec_id in ($data)";
             
             $this->query($sql);
         }
