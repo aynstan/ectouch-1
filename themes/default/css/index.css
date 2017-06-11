@@ -3026,7 +3026,7 @@ html, body, .index-header, .index-footer {
   overflow: hidden;
   margin: 0 auto;
   height: 4rem;
-  background-color: #1CBB7F;
+  background-color: #ea2d2d;
   padding: 0 1.3rem;
   top: 0; }
   .index-header .index-header-menu, .index-header .index-header-right {
@@ -3371,11 +3371,13 @@ h3 {
 .index-more-list {
   overflow: hidden; }
   .index-more-list li {
-    width: 49%;
+    width: 27%;
+    display: inline-block;
     height: auto;
     background-color: #FFFFFF;
-    padding-bottom: 0.625rem;
-    margin-bottom: 0.625rem; }
+    margin: 0.8rem;
+/*    padding-bottom: 0.625rem;
+    margin-bottom: 0.625rem;*/ }
     .index-more-list li img {
       width: 100%;
       max-width: 294px;
@@ -3392,7 +3394,7 @@ h3 {
       line-height: 1.2rem; }
     .index-more-list li span {
       font-size: 1.125rem;
-      color: #1CBB7F;
+      color: #ea2d2d;
       padding: 0 0.45rem; }
 
 .index-touch {
@@ -3403,11 +3405,11 @@ h3 {
   text-align: center; }
   .index-footer-list i {
     padding-top: 0.35rem;
-    color: #D7D7D7;
+    color: #151212;
     display: block; }
   .index-footer-list span {
     font-size: 0.93rem;
-    color: #D7D7D7;
+    color: #151212;
     line-height: 1.5rem; }
 
 .index-footer {
@@ -3420,7 +3422,7 @@ h3 {
   height: 4rem;
   bottom: 0;
   z-index: 4;
-  background-color: #383838; }
+  background-color: #fff; }
   .index-footer ul {
     overflow: hidden; }
 
@@ -3430,12 +3432,12 @@ h3 {
   text-align: center; }
   .index-footer-list i {
     font-size: 1.6rem;
-    color: #D7D7D7;
+    color: #151212;
     display: block;
     line-height: 1.6rem; }
   .index-footer-list span {
     font-size: 0.9rem;
-    color: #D7D7D7; }
+    color: #151212; }
 
 body, .index-header, .index-footer {
   -webkit-transition: all 0.3s ease;
@@ -3607,3 +3609,16 @@ body, .index-header, .index-footer {
 
 #loading{ position: fixed; left:0; top: 0; right: 0; bottom: 0; background:rgba(255,255,255,0.6);z-index: 111;}
 #loading img{ position:absolute; width:5rem; height: auto; left:50%; top: 50%; margin-left:-2rem; margin-top:-3rem;}
+.con-index{
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bolder;
+  letter-spacing: 0.8rem;
+  margin: 0.6rem;
+  height: 5.5rem;
+  line-height: 5.5rem;
+  background: url("../images/index_goods.png");
+  background-size:100% 5.5rem;
+  background-repeat:no-repeat;
+}

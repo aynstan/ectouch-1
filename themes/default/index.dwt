@@ -6,7 +6,7 @@
 <title>{$page_title}</title>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/swiper/css/swiper.min.css"/>
 <link rel="stylesheet" href="__PUBLIC__/bootstrap/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="__TPL__/css/index.css"/>
+<link rel="stylesheet" type="text/css" href="__TPL__/css/index.css?v=0003"/>
 <link rel="stylesheet" type="text/css" href="__TPL__/css/search_index.css"/>
 <style type="text/css">
   .swiper-wrapper .swiper-pagination-bullet-active {background: #1CBB7F;}
@@ -80,10 +80,30 @@
       <!-- #BeginLibraryItem "/library/cat_goods.lbi" --><!-- #EndLibraryItem -->
       </ul>
   </div>
-
+      <div class="con-index">新品展示</div>
       <ul class="index-more-list" id="J_ItemList">
-        <div class="single_item"></div>
-        <a href="javascript:;" style="text-align:center" class="get_more"></a>
+
+        {foreach from=$new_goods_list item=goods_new}
+          <li class="f1">
+            <a href="{$goods_new.url}"><img src="{$goods_new.goods_img}" alt="{$goods_new.name}" /></a>
+            <a href="{$goods_new.url}"><p>{$goods_new.name}</p></a>
+            <span class="goods-price"><!--{if $goods_new.promote_price}-->{$goods_new.promote_price}<!--{else}-->{$goods_new.shop_price}<!--{/if}--></span>
+          </li>
+        {/foreach}
+      </ul>
+
+
+
+      <div class="con-index">主持人推荐</div>
+      <ul class="index-more-list" id="J_ItemList1">
+
+        {foreach from=$best_goods_list item=goods_best}
+          <li class="f1">
+            <a href="{$goods_best.url}"><img src="{$goods_best.goods_img}" alt="{$goods_best.name}" /></a>
+            <a href="{$goods_best.url}"><p>{$goods_best.name}</p></a>
+            <span class="goods-price"><!--{if $goods_best.promote_price}-->{$goods_best.promote_price}<!--{else}-->{$goods_best.shop_price}<!--{/if}--></span>
+          </li>
+        {/foreach}
       </ul>
   </div>
 </div>

@@ -3,4 +3,4 @@
 <script type="text/javascript" src="__TPL__/statics/js/swiper-3.2.5.min.js"></script>
 <script type="text/javascript" src="__TPL__/statics/js/ectouch.js"></script>
 <script type="text/javascript" src="__PUBLIC__/js/jquery.json.js"></script> 
-<script type="text/javascript" src="__PUBLIC__/js/common.js?v=002"></script>
+<script type="text/javascript" src="__PUBLIC__/js/common.js?v=003"></script>

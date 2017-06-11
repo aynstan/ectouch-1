@@ -36,7 +36,27 @@ class IndexController extends CommonController {
             $cat_rec = model('Index')->get_recommend_res(10,4);
             $this->assign('cat_best', $cat_rec[1]);
             $this->assign('cat_new', $cat_rec[2]);
-            $this->assign('cat_hot', $cat_rec[3]);			
+            $this->assign('cat_hot', $cat_rec[3]);	
+
+            // 主持人推荐
+            $best_goods_list = model('Category')->assign_cat_goods('1', $num = 0, $from = 'web', $order_rule = '', "is_best");
+            // echo "<pre>";
+            // var_dump($best_goods_list);die();
+            // 新品展示
+            $new_goods_list = model('Category')->assign_cat_goods('0', $num = 0, $from = 'web', $order_rule = '', "is_new");
+            foreach ($new_goods_list as $key => $value) {
+
+                $properties = model('Goods')->get_goods_properties($value['id']);
+                if($properties['spe']){
+                    // $new_goods_list[$key]['spe'] = $properties['spe'][2]['values'][0]['format_price'];
+                    $new_goods_list[$key]['shop_price'] = $properties['spe'][2]['values'][0]['format_price'];
+                    // var_dump($new_goods_list[$key]['spe']);die();
+                }
+            }
+            $this->assign('best_goods_list', $best_goods_list);
+            $this->assign('new_goods_list', $new_goods_list);
+
+
             // 促销活动
             $this->assign('promotion_info', model('GoodsBase')->get_promotion_info());
             // 团购商品

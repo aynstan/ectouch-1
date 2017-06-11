@@ -287,18 +287,23 @@ class CategoryModel extends BaseModel {
      * @param   string      $order_rule 指定商品排序规则
      * @return  array
      */
-    function assign_cat_goods($cat_id, $num = 0, $from = 'web', $order_rule = '') {
+    function assign_cat_goods($cat_id, $num = 0, $from = 'web', $order_rule = '', $type='') {
         $children = get_children($cat_id);
 
         $sql = 'SELECT g.goods_id, g.goods_name, g.market_price, g.shop_price AS org_price, ' .
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, " .
-                'g.promote_price, promote_start_date, promote_end_date, g.goods_brief, g.goods_thumb, g.goods_img ' .
+                'g.promote_price, promote_start_date, promote_end_date, g.goods_brief, g.goods_thumb, g.goods_img, c.start ' .
                 "FROM " . $this->pre . 'goods AS g ' .
                 "LEFT JOIN " . $this->pre . "member_price AS mp " .
                 "ON mp.goods_id = g.goods_id AND mp.user_rank = '$_SESSION[user_rank]' " .
+                "LEFT JOIN " . $this->pre . "category AS c " .
+                "ON c.cat_id = g.cat_id " .
                 'WHERE g.is_on_sale = 1 AND g.is_alone_sale = 1 AND ' .
                 'g.is_delete = 0 AND (' . $children . 'OR ' . model('Goods')->get_extension_goods($children) . ') ';
-
+        if($type){
+            $sql .= " AND g.$type = 1 ";
+        }
+        // echo $sql;die();
         $order_rule = empty($order_rule) ? 'ORDER BY g.sort_order, g.goods_id DESC' : $order_rule;
         $sql .= $order_rule;
         if ($num > 0) {
@@ -316,6 +321,7 @@ class CategoryModel extends BaseModel {
             }
 
             $goods[$idx]['id'] = $row['goods_id'];
+            $goods[$idx]['start'] = $row['start'];
             $goods[$idx]['name'] = $row['goods_name'];
             $goods[$idx]['brief'] = $row['goods_brief'];
             $goods[$idx]['market_price'] = price_format($row['market_price']);
