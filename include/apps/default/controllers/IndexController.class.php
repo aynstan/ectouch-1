@@ -49,7 +49,12 @@ class IndexController extends CommonController {
                 $properties = model('Goods')->get_goods_properties($value['id']);
                 if($properties['spe']){
                     // $new_goods_list[$key]['spe'] = $properties['spe'][2]['values'][0]['format_price'];
-                    $new_goods_list[$key]['shop_price'] = $properties['spe'][2]['values'][0]['format_price'];
+                    foreach ($properties['spe'][2]['values'] as $k => $v) {
+                        if(strstr($v['label'], "购买")){
+                            $new_goods_list[$key]['shop_price'] = $v['format_price'];
+                            break;
+                        }
+                    }
                     // var_dump($new_goods_list[$key]['spe']);die();
                 }
             }

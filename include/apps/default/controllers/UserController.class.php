@@ -461,6 +461,8 @@ class UserController extends CommonController {
             /* 取得在线支付方式的支付按钮 */
             $pay_obj = new $payment_info ['pay_code'] ();
             $payment_info['pay_button'] = $pay_obj->get_code($order, $payment);
+            echo "<pre>";
+            var_dump($payment_info);die();
     
             /* 模板赋值 */
 			$this->assign('title', L('label_act_account'));

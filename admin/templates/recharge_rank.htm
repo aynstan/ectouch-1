@@ -1,0 +1,46 @@
+<!-- $Id: user_rank.htm 14216 2008-03-10 02:27:21Z testyang $ -->
+{if $full_page}
+{include file="pageheader.htm"}
+{insert_scripts files="../js/utils.js,listtable.js"}
+
+<form method="post" action="" name="listForm">
+<!-- start ads list -->
+<div class="list-div" id="listDiv">
+{/if}
+
+<table cellspacing='1' id="list-table">
+  <tr>
+    <th>充值下限</th>
+    <th>充值上限</th>
+    <th>赠送余额</th>
+    <th>{$lang.handler}</th>
+  </tr>
+  {foreach from=$recharge_rank item=rank}
+  <tr>
+    <td align="right"><span onclick="listTable.edit(this, 'edit_min_money', {$rank.rec_id})">{$rank.min_money}</span></td>
+    <td align="right"><span onclick="listTable.edit(this, 'edit_max_money', {$rank.rec_id})">{$rank.max_money}</span></td>
+    <td align="right"><span onclick="listTable.edit(this, 'edit_sent_money', {$rank.rec_id})">{$rank.sent_money}</span></td>
+
+    <td align="center">
+    <a href="user_account.php?act=remove_charge&rec_id={$rank.rec_id}" title="{$lang.remove}"><img src="images/icon_drop.gif" border="0" height="16" width="16"></a></td>
+  </tr>
+  {/foreach}
+  </table>
+
+{if $full_page}
+</div>
+<!-- end user ranks list -->
+</form>
+<script type="Text/Javascript" language="JavaScript">
+<!--
+{literal}
+onload = function()
+{
+    // 开始检查订单
+    startCheckOrder();
+}
+{/literal}
+//-->
+</script>
+{include file="pagefooter.htm"}
+{/if}

@@ -106,8 +106,8 @@
 
 
 
-
-<!--       <tr>
+<!-- 
+      <tr>
         <td class="label">可以租用 :</td>
         <td>
           <input type="radio" name="is_rent" value="1" <?php if ($this->_var['goods']['is_rent'] != 0): ?> checked="true"<?php endif; ?>/> <?php echo $this->_var['lang']['yes']; ?>
@@ -121,6 +121,13 @@
           <input type="text" name='rent_price' value='<?php echo $this->_var['goods']['rent_price']; ?>' size="12" placeholder="0.00" />
         </td>
       </tr> -->
+
+      <tr>
+        <td class="label">主持人手机 :</td>
+        <td>
+          <input type="text" name='host_mobile' value='<?php echo $this->_var['goods']['host_mobile']; ?>' size="20"/>
+        </td>
+      </tr>
 
 
           <!--/*DRP_START*/-->

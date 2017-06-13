@@ -12,9 +12,9 @@
 
 <link rel="stylesheet" href="__TPL__/assets/bootstrap/css/font-awesome.min.css">
 <link rel="stylesheet" href="__TPL__/statics/css/swiper-3.2.5.min.css" />
-<link rel="stylesheet" href="__TPL__/statics/css/ectouch.css" />
+<link rel="stylesheet" href="__TPL__/statics/css/ectouch.css?v=1311" />
 <link rel="stylesheet" href="__TPL__/statics/fonts/iconfont.css" />
-<link rel="stylesheet" href="__TPL__/statics/css/search.css" />
+<link rel="stylesheet" href="__TPL__/statics/css/search.css?v=1312" />
 
 </head>
 

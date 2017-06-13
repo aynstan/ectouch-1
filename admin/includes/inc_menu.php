@@ -68,6 +68,7 @@ $modules['04_menu_members']['09_user_account']           = 'user_account.php?act
 //$modules['04_menu_members']['10_user_account_manage']    = 'user_account_manage.php?act=list';
 //$modules['04_menu_members']['ucenter_setup']              = 'integrate.php?act=setup&code=ucenter';
 //$modules['04_menu_members']['021_reg_fields']             = 'reg_fields.php?act=list';
+$modules['04_menu_members']['12_account_set']             = 'user_account.php?act=set_list';
 
 // 内容
 $modules['05_menu_content']['ad_position']                = 'ad_position.php?act=list';
