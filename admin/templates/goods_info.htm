@@ -279,7 +279,7 @@
           </tr>
           <tr>
             <td class="label">{$lang.lab_is_free_shipping}</td>
-            <td><input type="checkbox" name="is_shipping" value="1" {if $goods.is_shipping}checked="checked"{/if} /> {$lang.free_shipping}</td>
+            <td><input type="checkbox" name="is_shipping" value="0" {if $goods.is_shipping eq 0}checked="checked"{/if} /> {$lang.free_shipping}</td>
           </tr>
           <tr>
             <td class="label">{$lang.lab_keywords}</td>

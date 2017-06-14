@@ -19,7 +19,7 @@
       </a>
       <section class="ect-margin-tb ect-padding-lr checkout-select" id="accordion"> 
         <!--{if $total.real_goods_count neq 0}--> 
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="display:none">
         <p><b>{$lang.shipping_method}</b><span class="label ect-bg-colory">必选</span></p>
         <i class="fa fa-angle-down"></i></a>
         <div id="collapseOne" class="panel-collapse collapse in">
@@ -206,7 +206,7 @@
                 <span style="color:#FF0000">（{$lang.largess}）</span> 
                 <!-- {/if} --> 
                 <!-- {/if} --> 
-                <!-- {if $goods.is_shipping} -->(<span style="color:#FF0000">{$lang.free_goods}</span>)<!-- {/if} --> 
+                <!-- {if $goods.is_shipping} --><!-- {/if} --> 
               </dt>
               <dd class="pull-left list-num">x {$goods.goods_number}</dd>
               <dd class="pull-right">{$goods.formated_subtotal}</dd>

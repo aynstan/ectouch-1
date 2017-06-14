@@ -26,7 +26,7 @@
        <!--<?php if ($this->_var['field']['name'] == 'item_fee' || $this->_var['field']['name'] == 'free_money' || $this->_var['field']['name'] == 'pay_fee'): ?>-->
             <tr id="<?php echo $this->_var['field']['name']; ?>" >
               <td class="label"><?php echo $this->_var['field']['label']; ?></td>
-              <td><input type="text" name="<?php echo $this->_var['field']['name']; ?>"  maxlength="60" size="20" value="<?php echo $this->_var['field']['value']; ?>" /><?php echo $this->_var['lang']['require_field']; ?></td>
+              <td><input type="text" name="<?php echo $this->_var['field']['name']; ?>"  maxlength="60" size="20" value="<?php echo $this->_var['field']['value']; ?>11" /><?php echo $this->_var['lang']['require_field']; ?></td>
             </tr>
             <!--<?php else: ?>-->
             <tr id="<?php echo $this->_var['field']['name']; ?>" style="display:none">

@@ -474,4 +474,22 @@ class FlowModel extends BaseModel {
         }
     }
 
+    public function is_cart_reserve(){
+        $sql = "SELECT goods_name, goods_reserve_id FROM " . $this->pre . "cart WHERE user_id = '$_SESSION[user_id]' AND goods_reserve_id > 0";
+        $goods_lists = $this->query($sql);
+        foreach ($goods_lists as $key => $value) {
+            // 获取预约的时间段
+            $sql = "SELECT * FROM " . $this->pre . "touch_goods_reserve WHERE rec_id = $value[goods_reserve_id]";
+            $reserve = $this->row($sql);
+            // 判断是否存在预约
+            $sql = "SELECT count(*) as count FROM "  . $this->pre . "touch_goods_reserve WHERE goods_id = '$reserve[goods_id]' AND reserve_date = '$reserve[reserve_date]' AND time_slot = '$reserve[time_slot]' AND (type = '1' or type = '2') limit 1 ";
+            $reserve_record = $this->row($sql);
+            if($reserve_record['count']){
+                show_message($value['goods_name'].$reserve['reserve_date']. ($reserve['time_slot'] == 'a' ? '中午' : '晚上') . "已经被预约");
+            }
+
+        }
+        return count($goods_lists);
+    }
+
 }

@@ -163,7 +163,7 @@ elseif ($_REQUEST['act'] == 'add' || $_REQUEST['act'] == 'edit' || $_REQUEST['ac
             'brand_id'      => $last_choose[1],
             'is_on_sale'    => '1',
             'is_alone_sale' => '1',
-            'is_shipping' => '0',
+            'is_shipping' => '1',
             'other_cat'     => array(), // 扩展分类
             'goods_type'    => 0,       // 商品类型
             'shop_price'    => 0,
@@ -824,7 +824,7 @@ elseif ($_REQUEST['act'] == 'insert' || $_REQUEST['act'] == 'update')
     $is_hot = isset($_POST['is_hot']) ? 1 : 0;
     $is_on_sale = isset($_POST['is_on_sale']) ? 1 : 0;
     $is_alone_sale = isset($_POST['is_alone_sale']) ? 1 : 0;
-    $is_shipping = isset($_POST['is_shipping']) ? 1 : 0;
+    $is_shipping = isset($_POST['is_shipping']) ? 0 : 1;
     $goods_number = isset($_POST['goods_number']) ? $_POST['goods_number'] : 0;
     $warn_number = isset($_POST['warn_number']) ? $_POST['warn_number'] : 0;
     $goods_type = isset($_POST['goods_type']) ? $_POST['goods_type'] : 0;

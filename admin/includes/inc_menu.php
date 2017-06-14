@@ -18,7 +18,8 @@ $modules['00_menu_dashboard']['01_dashboard_welcome'] = 'index.php?act=main';
 // 设置
 $modules['01_menu_system']['01_shop_config']             = 'shop_config.php?act=list_edit';
 $modules['01_menu_system']['02_payment_list']            = 'payment.php?act=list';
-$modules['01_menu_system']['03_shipping_list']           = 'shipping.php?act=list';
+// $modules['01_menu_system']['03_shipping_list']           = 'shipping.php?act=list';
+$modules['01_menu_system']['03_shipping_list']           = 'shipping_area.php?act=list&shipping=1';
 $modules['01_menu_system']['05_area_list']               = 'area_manage.php?act=list';
 $modules['01_menu_system']['admin_logs']             = 'admin_logs.php?act=list';
 $modules['01_menu_system']['admin_list']             = 'privilege.php?act=list';

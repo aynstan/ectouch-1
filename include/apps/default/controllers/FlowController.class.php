@@ -411,6 +411,11 @@ class FlowController extends CommonController {
         }
         // 获取收货人信息
         $consignee = model('Order')->get_consignee($_SESSION ['user_id']);
+
+
+        // 检查购物车中是否有商品已经被预约
+        model('Flow')->is_cart_reserve();
+        
         /* 检查收货人信息是否完整 */
         if (!model('Order')->check_consignee_info($consignee, $flow_type)) {
             /* 如果不完整则转向到收货人信息填写界面 */

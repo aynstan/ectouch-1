@@ -44,6 +44,11 @@ class MY_FlowController extends FlowController {
             /* 用户没有登录且没有选定匿名购物，转向到登录页面 */
             ecs_header("Location: " . url('user/login') . "\n");
         }
+
+
+        // 检查购物车中是否有商品已经被预约
+        model('Flow')->is_cart_reserve();
+
         // 获取收货人信息
         $consignee = model('Order')->get_consignee($_SESSION ['user_id']);
         /* 检查收货人信息是否完整 */

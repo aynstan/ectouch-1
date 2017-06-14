@@ -250,7 +250,8 @@ $_LANG['01_shop_config'] = '商店设置';
 $_LANG['shop_authorized'] = '授权证书';
 $_LANG['shp_webcollect'] = '网罗天下';
 $_LANG['02_payment_list'] = '支付方式';
-$_LANG['03_shipping_list'] = '配送方式';
+// $_LANG['03_shipping_list'] = '配送方式';
+$_LANG['03_shipping_list'] = '出场区域';
 $_LANG['04_mail_settings'] = $_LANG['03_mail_settings'] = '邮件服务器设置';
 $_LANG['05_area_list'] = '地区列表';
 $_LANG['07_cron_schcron'] = '计划任务';
@@ -367,7 +368,7 @@ $_LANG['01_dashboard_welcome'] = '欢迎页面';
 // 设置
 $_LANG['01_shop_config'] = '商店设置';
 $_LANG['02_payment_list'] = '支付方式';
-$_LANG['03_shipping_list'] = '配送方式';
+$_LANG['03_shipping_list'] = '出场区域';
 $_LANG['04_area_list'] = '地区列表';
 $_LANG['05_admin_list'] = '管理员列表';
 $_LANG['06_admin_role'] = '角色管理';

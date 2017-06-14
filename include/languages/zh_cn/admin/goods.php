@@ -137,7 +137,7 @@ $_LANG['lab_rank_integral'] = '赠送等级积分数：';
 $_LANG['lab_intro'] = '加入推荐：';
 $_LANG['lab_is_on_sale'] = '上架：';
 $_LANG['lab_is_alone_sale'] = '能作为普通商品销售：';
-$_LANG['lab_is_free_shipping'] = '是否为免运费商品';
+$_LANG['lab_is_free_shipping'] = '是否为加收出场费商品';
 
 $_LANG['compute_by_mp'] = '按市场价计算';
 
@@ -153,7 +153,7 @@ $_LANG['notice_goods_type'] = '请选择商品的所属类型，进而完善此�
 
 $_LANG['on_sale_desc'] = '打勾表示允许销售，否则不允许销售。';
 $_LANG['alone_sale'] = '打勾表示能作为普通商品销售，否则只能作为配件或赠品销售。';
-$_LANG['free_shipping'] = '打勾表示此商品不会产生运费花销，否则按照正常运费计算。';
+$_LANG['free_shipping'] = '打勾表示此商品按照出场区域设置收取出场费，否则不收取出场费。';
 
 $_LANG['invalid_goods_img'] = '商品图片格式不正确！';
 $_LANG['invalid_goods_thumb'] = '商品缩略图格式不正确！';

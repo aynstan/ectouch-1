@@ -1037,9 +1037,9 @@ class OrderModel extends BaseModel {
                 $sql = "SELECT * FROM " . $this->pre . "touch_goods_reserve WHERE rec_id = $row[goods_reserve_id]";
                 $row['reserve'] = $this->row($sql);
                 if($row['reserve']['time_slot'] == 'a'){
-                    $row['reserve_str'] = $row['reserve']['reserve_date'] ." 上午";
+                    $row['reserve_str'] = $row['reserve']['reserve_date'] ." 中午";
                 }else{
-                    $row['reserve_str'] = $row['reserve']['reserve_date'] ." 下午";
+                    $row['reserve_str'] = $row['reserve']['reserve_date'] ." 晚上";
                 }
             }
             $goods_list[] = $row;
@@ -1243,14 +1243,14 @@ class OrderModel extends BaseModel {
                 $arr = model('Order')->last_shipping_and_payment();
 
                 if (!isset($order['shipping_id'])) {
-                    $order['shipping_id'] = $arr['shipping_id'];
+                    $order['shipping_id'] = $arr['shipping_id'] ? $arr['shipping_id'] : 1;
                 }
                 if (!isset($order['pay_id'])) {
                     $order['pay_id'] = $arr['pay_id'];
                 }
             } else {
                 if (!isset($order['shipping_id'])) {
-                    $order['shipping_id'] = 0;
+                    $order['shipping_id'] = 1;
                 }
                 if (!isset($order['pay_id'])) {
                     $order['pay_id'] = 0;

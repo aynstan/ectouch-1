@@ -7,7 +7,7 @@
   <section class="ect-bg-colorf ect-padding-lr flow-done">
   		<i class="glyphicon glyphicon-ok"></i>
         <p class="ect-margin-tb">{$lang.remember_order_number}：<b class="ect-color">{$order.order_sn}</b></p>
-        <p class="ect-margin-tb"><!--{if $order.shipping_name}-->{$lang.select_shipping}:<b>{$order.shipping_name}</b><!--{/if}--></p>
+<!--        <p class="ect-margin-tb"><!--{if $order.shipping_name}-->{$lang.select_shipping}:<b>{$order.shipping_name}</b><!--{/if}--></p> -->
         <p class="ect-margin-tb">{$lang.order_amount}: <b>{$total.amount_formated}</b></p>
         <!--{if $virtual_card}-->
         <div class="alert alert-warning" role="alert" style="height: 100px;">
