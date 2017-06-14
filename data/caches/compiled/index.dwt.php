@@ -7,7 +7,7 @@
 <title><?php echo $this->_var['page_title']; ?></title>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/swiper/css/swiper.min.css"/>
 <link rel="stylesheet" href="__PUBLIC__/bootstrap/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="__TPL__/css/index.css?v=0003"/>
+<link rel="stylesheet" type="text/css" href="__TPL__/css/index.css?v=0003213"/>
 <link rel="stylesheet" type="text/css" href="__TPL__/css/search_index.css"/>
 <style type="text/css">
   .swiper-wrapper .swiper-pagination-bullet-active {background: #1CBB7F;}

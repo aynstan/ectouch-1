@@ -1,4 +1,4 @@
-<?php exit;?>a:3:{s:8:"template";a:5:{i:0;s:52:"D:/phpStudy/WWW/public_html/themes/default/index.dwt";i:1;s:64:"D:/phpStudy/WWW/public_html/themes/default/library/cat_goods.lbi";i:2;s:70:"D:/phpStudy/WWW/public_html/themes/default/library/page_index_menu.lbi";i:3;s:67:"D:/phpStudy/WWW/public_html/themes/default/library/search_index.lbi";i:4;s:66:"D:/phpStudy/WWW/public_html/themes/default/library/page_footer.lbi";}s:7:"expires";i:1497447355;s:8:"maketime";i:1497443755;}<!DOCTYPE html>
+<?php exit;?>a:3:{s:8:"template";a:5:{i:0;s:52:"D:/phpStudy/WWW/public_html/themes/default/index.dwt";i:1;s:64:"D:/phpStudy/WWW/public_html/themes/default/library/cat_goods.lbi";i:2;s:70:"D:/phpStudy/WWW/public_html/themes/default/library/page_index_menu.lbi";i:3;s:67:"D:/phpStudy/WWW/public_html/themes/default/library/search_index.lbi";i:4;s:66:"D:/phpStudy/WWW/public_html/themes/default/library/page_footer.lbi";}s:7:"expires";i:1497448970;s:8:"maketime";i:1497445370;}<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta name="Generator" content="ECTouch 2.2.30" />
@@ -7,7 +7,7 @@
 <title>南古情商城</title>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/swiper/css/swiper.min.css"/>
 <link rel="stylesheet" href="__PUBLIC__/bootstrap/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="__TPL__/css/index.css?v=0003"/>
+<link rel="stylesheet" type="text/css" href="__TPL__/css/index.css?v=0003213"/>
 <link rel="stylesheet" type="text/css" href="__TPL__/css/search_index.css"/>
 <style type="text/css">
   .swiper-wrapper .swiper-pagination-bullet-active {background: #1CBB7F;}
@@ -93,12 +93,12 @@
                   <li class="f1">
             <a href="/index.php?m=default&c=goods&a=index&id=4&u=0"><img src="http://touchshop.com/data/assets/images/201706/goods_img/4_G_1497390943446.jpg" alt="宴会产品002" /></a>
             <a href="/index.php?m=default&c=goods&a=index&id=4&u=0"><p>宴会产品002</p></a>
-            <span class="goods-price">￥10.00元</span>
+            <span class="goods-price">￥100.00元</span>
           </li>
                   <li class="f1">
             <a href="/index.php?m=default&c=goods&a=index&id=3&u=0"><img src="http://touchshop.com/data/assets/images/201706/goods_img/3_G_1497390962110.jpg" alt="宴会舞台产品001" /></a>
             <a href="/index.php?m=default&c=goods&a=index&id=3&u=0"><p>宴会舞台产品001</p></a>
-            <span class="goods-price">￥200.00元</span>
+            <span class="goods-price">￥500.00元</span>
           </li>
               </ul>
       <div class="con-index">主持人推荐</div>
@@ -125,7 +125,6 @@
 	<ul>
 	<li class="fl index-footer-list"><a href="/index.php?m=default&c=index&a=index&u=0"><i class="iconfont">&#xe621;</i><span>首页</span></a></li>
 	<li class="fl index-footer-list"><a href="/index.php?m=default&c=category&a=top_all&u=0"><i class="iconfont">&#xe627;</i><span>分类</span></a></li>
-	<li class="fl index-footer-list"><a href="javascript:openSearch();"><i class="iconfont">&#xe617;</i><span>搜索</span></a></li>
 	<li class="fl index-footer-list"><a href="/index.php?m=default&c=flow&a=cart&u=0"><i class="iconfont">&#xe626;</i><span>购物车</span></a></li>
 		<li class="fl index-footer-list"><a href="/index.php?m=default&c=user&a=index&u=0"><i class="iconfont">&#xe625;</i><span>用户中心</span></a></li>
 		
