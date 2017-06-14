@@ -1,4 +1,4 @@
-<?php exit;?>a:3:{s:8:"template";a:5:{i:0;s:52:"D:/phpStudy/WWW/public_html/themes/default/index.dwt";i:1;s:64:"D:/phpStudy/WWW/public_html/themes/default/library/cat_goods.lbi";i:2;s:70:"D:/phpStudy/WWW/public_html/themes/default/library/page_index_menu.lbi";i:3;s:67:"D:/phpStudy/WWW/public_html/themes/default/library/search_index.lbi";i:4;s:66:"D:/phpStudy/WWW/public_html/themes/default/library/page_footer.lbi";}s:7:"expires";i:1497171874;s:8:"maketime";i:1497168274;}<!DOCTYPE html>
+<?php exit;?>a:3:{s:8:"template";a:5:{i:0;s:52:"D:/phpStudy/WWW/public_html/themes/default/index.dwt";i:1;s:64:"D:/phpStudy/WWW/public_html/themes/default/library/cat_goods.lbi";i:2;s:70:"D:/phpStudy/WWW/public_html/themes/default/library/page_index_menu.lbi";i:3;s:67:"D:/phpStudy/WWW/public_html/themes/default/library/search_index.lbi";i:4;s:66:"D:/phpStudy/WWW/public_html/themes/default/library/page_footer.lbi";}s:7:"expires";i:1497447355;s:8:"maketime";i:1497443755;}<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta name="Generator" content="ECTouch 2.2.30" />
@@ -7,7 +7,7 @@
 <title>南古情商城</title>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/swiper/css/swiper.min.css"/>
 <link rel="stylesheet" href="__PUBLIC__/bootstrap/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="__TPL__/css/index.css?v=0002"/>
+<link rel="stylesheet" type="text/css" href="__TPL__/css/index.css?v=0003"/>
 <link rel="stylesheet" type="text/css" href="__TPL__/css/search_index.css"/>
 <style type="text/css">
   .swiper-wrapper .swiper-pagination-bullet-active {background: #1CBB7F;}
@@ -86,33 +86,28 @@
       <div class="con-index">新品展示</div>
       <ul class="index-more-list" id="J_ItemList">
                   <li class="f1">
-            <a href="/index.php?m=default&c=goods&a=index&id=19&u=0"><img src="http://touchshop.com/data/assets/images/201706/goods_img/19_G_1496682418794.jpg" alt="舒文" /></a>
-            <a href="/index.php?m=default&c=goods&a=index&id=19&u=0"><p>舒文</p></a>
-            <span class="goods-price">￥0元</span>
+            <a href="/index.php?m=default&c=goods&a=index&id=21&u=0"><img src="http://touchshop.com/data/assets/images/201706/goods_img/21_G_1497391218296.jpg" alt="产品002" /></a>
+            <a href="/index.php?m=default&c=goods&a=index&id=21&u=0"><p>产品002</p></a>
+            <span class="goods-price">￥100.00元</span>
           </li>
                   <li class="f1">
-            <a href="/index.php?m=default&c=goods&a=index&id=18&u=0"><img src="http://touchshop.com/data/assets/images/201706/goods_img/18_G_1496682393577.jpg" alt="黄磊" /></a>
-            <a href="/index.php?m=default&c=goods&a=index&id=18&u=0"><p>黄磊</p></a>
-            <span class="goods-price">￥0元</span>
-          </li>
-                  <li class="f1">
-            <a href="/index.php?m=default&c=goods&a=index&id=17&u=0"><img src="http://touchshop.com/data/assets/images/201706/goods_img/17_G_1496682355290.jpg" alt="黄磊" /></a>
-            <a href="/index.php?m=default&c=goods&a=index&id=17&u=0"><p>黄磊</p></a>
-            <span class="goods-price">￥0元</span>
-          </li>
-                  <li class="f1">
-            <a href="/index.php?m=default&c=goods&a=index&id=4&u=0"><img src="/data/assets/images/no_picture.gif" alt="宴会产品002" /></a>
+            <a href="/index.php?m=default&c=goods&a=index&id=4&u=0"><img src="http://touchshop.com/data/assets/images/201706/goods_img/4_G_1497390943446.jpg" alt="宴会产品002" /></a>
             <a href="/index.php?m=default&c=goods&a=index&id=4&u=0"><p>宴会产品002</p></a>
             <span class="goods-price">￥10.00元</span>
           </li>
                   <li class="f1">
-            <a href="/index.php?m=default&c=goods&a=index&id=3&u=0"><img src="/data/assets/images/no_picture.gif" alt="宴会舞台产品001" /></a>
+            <a href="/index.php?m=default&c=goods&a=index&id=3&u=0"><img src="http://touchshop.com/data/assets/images/201706/goods_img/3_G_1497390962110.jpg" alt="宴会舞台产品001" /></a>
             <a href="/index.php?m=default&c=goods&a=index&id=3&u=0"><p>宴会舞台产品001</p></a>
-            <span class="goods-price">￥500元</span>
+            <span class="goods-price">￥200.00元</span>
           </li>
               </ul>
       <div class="con-index">主持人推荐</div>
       <ul class="index-more-list" id="J_ItemList1">
+                  <li class="f1">
+            <a href="/index.php?m=default&c=goods&a=index&id=5&u=0"><img src="http://touchshop.com/data/assets/images/201706/goods_img/5_G_1496681325132.jpg" alt="李磊" /></a>
+            <a href="/index.php?m=default&c=goods&a=index&id=5&u=0"><p>李磊</p></a>
+            <span class="goods-price">￥2030元</span>
+          </li>
                   <li class="f1">
             <a href="/index.php?m=default&c=goods&a=index&id=2&u=0"><img src="http://touchshop.com/data/assets/images/201706/goods_img/2_G_1496681888049.jpg" alt="陈尔非" /></a>
             <a href="/index.php?m=default&c=goods&a=index&id=2&u=0"><p>陈尔非</p></a>
