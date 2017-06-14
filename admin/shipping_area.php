@@ -178,6 +178,10 @@ elseif ($_REQUEST['act'] == 'edit')
     include_once(BASE_PATH.'modules/shipping/'.$row['shipping_code'].'.php');
 
     $fields = unserialize($row['configure']);
+// echo "<pre>";
+//     var_dump($fields);die();
+
+
     /* 如果配送方式支持货到付款并且没有设置货到付款支付费用，则加入货到付款费用 */
     if ($row['support_cod'] && $fields[count($fields)-1]['name'] != 'pay_fee')
     {
@@ -199,6 +203,18 @@ elseif ($_REQUEST['act'] == 'edit')
 //       {
 //            $val['name'] = 'step_fee1';
 //       }
+       if ($val['name'] == 'free_money')
+       {
+           unset($fields[$key]);
+           continue;
+       }
+       
+       if ($val['name'] == 'pay_fee')
+       {
+           unset($fields[$key]);
+           continue;
+       }
+
 
        if ($val['name'] == 'item_fee')
        {

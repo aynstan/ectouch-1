@@ -1,0 +1,45 @@
+<!-- $Id: user_rank_info.htm 15053 2008-10-25 03:07:46Z testyang $ -->
+{include file="pageheader.htm"}
+
+<div class="main-div">
+<form action="user_account.php" method="post" name="theForm">
+<table width="100%">
+  <tr>
+    <td class="label">充值下限: </td>
+    <td><input type="text" name="min_money" value="{$rank.min_money}" size="10" maxlength="20" /></td>
+  </tr>
+  <tr>
+    <td class="label">充值上限: </td>
+    <td><input type="text" name="max_money" value="{$rank.max_money}" size="10" maxlength="20" /></td>
+  </tr>
+  <tr>
+    <td class="label">赠送余额: </td>
+    <td><input type="text" name="sent_money" value="{$rank.sent_money}" size="10" maxlength="20" /></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <input type="hidden" name="act" value="{$form_action}" />
+      <input type="hidden" name="id" value="{$rank.rec_id}" />
+      <input type="submit" value="{$lang.button_submit}" class="button" />
+      <input type="reset" value="{$lang.button_reset}" class="button" />
+    </td>
+  </tr>
+</table>
+</form>
+</div>
+{insert_scripts files="../js/utils.js,validator.js"}
+{literal}
+<script language="JavaScript">
+<!--
+document.forms['theForm'].elements['rank_name'].focus();
+
+onload = function()
+{
+  // 开始检查订单
+  startCheckOrder();
+}
+
+//-->
+</script>
+{/literal}
+{include file="pagefooter.htm"}

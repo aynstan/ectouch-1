@@ -173,6 +173,15 @@ class MY_PaymentModel extends PaymentModel {
                         $_LANG = array();
                         include_once(ROOT_PATH . 'languages/' . C('lang') . '/user.php');
                         model('ClipsBase')->log_account_change($arr['user_id'], $arr['amount'], 0, 0, 0, $_LANG['surplus_type_0'], ACT_SAVING);
+
+
+                        // 根据充值赠送调节用户的余额
+                        $sql = "SELECT sent_money FROM " . $this->pre . "recharge_rank WHERE min_money <= $arr[amount] AND max_money >= $arr[amount]";
+                        $sent_result = $this->row($sql);
+                        if($sent_result){
+
+                            model('ClipsBase')->log_account_change($arr['user_id'], $sent_result['sent_money'], 0, 0, 0, "充值赠送", ACT_SENT);
+                        }
                     }
                 }
             } else {

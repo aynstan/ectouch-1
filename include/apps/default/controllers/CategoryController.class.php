@@ -54,7 +54,7 @@ class CategoryController extends CommonController
         }
         $size = 10;
         $page = 1;
-
+        $this->assign('use_cat_price',1);
 
         $goodslist = $this->category_get_goods($category[0]['cat_id'], $this->brand, $this->price_min, $this->price_max, $size, $page, $this->sort, $this->order, $this->keywords);
         $this->assign('list', $goodslist);
@@ -104,7 +104,7 @@ class CategoryController extends CommonController
             $this->parameter();
             if($this->cat_id){
                 $use_cat_price = model('category')->use_price($this->cat_id);
-
+                if(in_array($this->cat_id, array(7, 29, 35))) $use_cat_price = 1;
                 $this->assign('use_cat_price', $use_cat_price);
 
                 $goodslist = $this->category_get_goods($this->cat_id, $this->brand, $this->price_min, $this->price_max, $size, $page, $this->sort, $this->order, $this->keywords);

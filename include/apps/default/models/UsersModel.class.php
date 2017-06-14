@@ -1556,7 +1556,7 @@ class UsersModel extends BaseModel {
                 $res = $this->row($sql);
                 $shipping_count = $res['count'];
 
-                $total['shipping_fee'] = ($shipping_count == 0 AND $weight_price['free_shipping'] == 1) ? 0 : shipping_fee($shipping_info['shipping_code'], $shipping_info['configure'], $weight_price['weight'], $total['goods_price'], $weight_price['number']);
+                $total['shipping_fee'] = ($shipping_count == 0 AND $weight_price['free_shipping'] == 1) ? 0 : shipping_fee($shipping_info['shipping_code'], $shipping_info['configure'], $weight_price['weight'], $total['goods_price'], $weight_price['number']) * $shipping_count;
 
                 if (!empty($order['need_insure']) && $shipping_info['insure'] > 0) {
                     $total['shipping_insure'] = shipping_insure_fee($shipping_info['shipping_code'], $total['goods_price'], $shipping_info['insure']);

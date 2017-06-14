@@ -16,6 +16,7 @@
 define('IN_ECTOUCH', true);
 
 require(dirname(__FILE__) . '/includes/init.php');
+$exc = new exchange($ecs->table("recharge_rank"), $db, 'rec_id', '');
 
 /* act操作项的初始化 */
 if (empty($_REQUEST['act']))
@@ -73,6 +74,183 @@ if ($_REQUEST['act'] == 'list')
     assign_query_info();
     $smarty->display('user_account_list.htm');
 }
+
+/*------------------------------------------------------ */
+//-- 会员充值设置列表
+/*------------------------------------------------------ */
+elseif ($_REQUEST['act'] == 'set_list')
+{
+    /* 权限判断 */
+    // admin_priv('surplus_manage');
+
+    $ranks = array();
+    $ranks = $db->getAll("SELECT * FROM " .$ecs->table('recharge_rank'));
+
+    // $smarty->assign('ur_here',      $_LANG['05_user_rank_list']);
+    $smarty->assign('action_link',  array('text' => '添加充值设置', 'href'=>'user_account.php?act=add_recharge'));
+    $smarty->assign('full_page',    1);
+
+    $smarty->assign('recharge_rank',   $ranks);
+
+    assign_query_info();
+    $smarty->display('recharge_rank.htm');
+}
+
+/*------------------------------------------------------ */
+//-- 新增充值设置
+/*------------------------------------------------------ */
+elseif ($_REQUEST['act'] == 'add_recharge')
+{
+    /* 权限判断 */
+    // admin_priv('surplus_manage');
+
+    $recharge['rec_id']      = 0;
+    $recharge['min_money']   = 0;
+    $recharge['max_money']   = 0;
+    $recharge['sent_money']   = 0;
+
+    $form_action          = 'insert_recharge';
+
+    $smarty->assign('recharge',        $recharge);
+    $smarty->assign('ur_here',     'ccc');
+    $smarty->assign('action_link', array('text' => '充值设置列表', 'href'=>'user_account.php?act=set_list'));
+    $smarty->assign('form_action', $form_action);
+
+    assign_query_info();
+    $smarty->display('user_recharge_info.htm');
+}
+
+elseif ($_REQUEST['act'] == 'insert_recharge')
+{
+    /* 权限判断 */
+    // admin_priv('surplus_manage');
+    $_POST['min_money'] = empty($_POST['min_money']) ? 0 : intval($_POST['min_money']);
+    $_POST['max_money'] = empty($_POST['max_money']) ? 0 : intval($_POST['max_money']);
+    $_POST['sent_money'] = empty($_POST['sent_money']) ? 0 : intval($_POST['sent_money']);
+
+    /* 检查上下限是否合理 */
+    if ($_POST['min_money'] >= $_POST['max_money'])
+    {
+        sys_msg("数据不合法", 1);
+    }
+
+    $sql = "INSERT INTO " .$ecs->table('recharge_rank') ."( ".
+                "min_money, max_money, sent_money".
+            ") VALUES ('".intval($_POST['min_money']). "', '" .intval($_POST['max_money']). "', ".
+                "'$_POST[sent_money]')";
+    $db->query($sql);
+
+    /* 管理员日志 */
+    // admin_log(trim($_POST['rank_name']), 'add', 'user_rank');
+    clear_cache_files();
+
+    $lnk[] = array('text' => $_LANG['back_list'],    'href'=>'user_account.php?act=set_list');
+    $lnk[] = array('text' => $_LANG['add_continue'], 'href'=>'user_account.php?act=add_recharge');
+    sys_msg('添加成功', 0, $lnk);
+
+}
+
+/*------------------------------------------------------ */
+//-- 删除一条信息
+/*------------------------------------------------------ */
+elseif ($_REQUEST['act'] == 'remove_charge')
+{
+    $rec_id = @intval($_REQUEST['rec_id']);
+    $sql = "DELETE FROM " . $ecs->table('recharge_rank') . " WHERE rec_id = '$rec_id'";
+    if ($db->query($sql, 'SILENT'))
+    {
+
+        $lnk[] = array('text' => $_LANG['back_list'],    'href'=>'user_account.php?act=set_list');
+        sys_msg('删除成功', 0, $lnk);
+    }else{
+        sys_msg("删除失败", 1);
+    }
+}
+
+
+/*
+ *  ajax编辑积分下限
+ */
+elseif ($_REQUEST['act'] == 'edit_min_money')
+{
+
+    $rec_id = empty($_REQUEST['id']) ? 0 : intval($_REQUEST['id']);
+    $val = empty($_REQUEST['val']) ? 0 : intval($_REQUEST['val']);
+
+    $rank = $db->getRow("SELECT max_money FROM " . $ecs->table('recharge_rank') . " WHERE rec_id = '$rec_id'");
+    if ($val >= $rank['max_money'])
+    {
+        make_json_error("数据不合法");
+    }
+
+    if (!$exc->is_only('min_money', $val, $rec_id))
+    {
+        make_json_error("数据不合法");
+    }
+
+    if ($exc->edit("min_money = '$val'", $rec_id))
+    {
+        make_json_result($val);
+    }
+    else
+    {
+        make_json_error($db->error());
+    }
+}
+
+/*
+ *  ajax修改积分上限
+ */
+elseif ($_REQUEST['act'] == 'edit_max_money')
+{
+
+    $rec_id = empty($_REQUEST['id']) ? 0 : intval($_REQUEST['id']);
+    $val = empty($_REQUEST['val']) ? 0 : intval($_REQUEST['val']);
+
+    $rank = $db->getRow("SELECT min_money FROM " . $ecs->table('recharge_rank') . " WHERE rec_id = '$rec_id'");
+
+    if ($val <= $rank['min_money'])
+    {
+        make_json_error("数据不合法");
+    }
+
+    if (!$exc->is_only('max_money', $val, $rec_id))
+    {
+        make_json_error("数据不合法");
+    }
+    if ($exc->edit("max_money = '$val'", $rec_id))
+    {
+        make_json_result($val);
+    }
+    else
+    {
+        make_json_error($db->error());
+    }
+}
+
+/*
+ *  修改折扣率
+ */
+elseif ($_REQUEST['act'] == 'edit_sent_money')
+{
+
+    $rec_id = empty($_REQUEST['id']) ? 0 : intval($_REQUEST['id']);
+    $val = empty($_REQUEST['val']) ? 0 : intval($_REQUEST['val']);
+
+    if ($exc->edit("sent_money = '$val'", $rec_id))
+    {
+         clear_cache_files();
+         make_json_result($val);
+    }
+    else
+    {
+        make_json_error($db->error());
+    }
+}
+
+
+
+
 
 /*------------------------------------------------------ */
 //-- 添加/编辑会员余额页面
