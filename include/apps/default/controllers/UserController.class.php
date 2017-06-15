@@ -283,7 +283,8 @@ class UserController extends CommonController {
         
         $account_detail = model('Users')->get_account_detail($this->user_id, $size, ($page-1)*$size);
         
-        $this->assign('title', L('label_user_surplus'));
+        $this->assign('title', "账户明细");
+        // $this->assign('title', L('label_user_surplus'));
         $this->assign('surplus_amount', price_format($surplus_amount, false));
         $this->assign('account_log', $account_detail);
         $this->display('user_account_detail.dwt');
@@ -354,11 +355,13 @@ class UserController extends CommonController {
      *  会员预付款界面 
      */
     public function account_deposit(){
-        $this->assign('title', L('label_user_surplus'));
+        // $this->assign('title', L('label_user_surplus'));
         $surplus_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
         $account    = model('ClipsBase')->get_surplus_info($surplus_id);
     
         $this->assign('payment', model('ClipsBase')->get_online_payment_list(false));
+
+        $this->assign('title', "账户充值");
         $this->assign('order',   $account);
         $this->display('user_account_deposit.dwt');
     }
@@ -1207,7 +1210,7 @@ class UserController extends CommonController {
         }
 
         // 页面显示
-        $this->assign('title', L('user_service'));
+        $this->assign('title', '意见反馈');
         $this->display('user_service.dwt');
     }
 

@@ -165,11 +165,11 @@ function collect(goodsId) {
  */
 function collectResponse(result) {
     if (result.error == 0) {
-        if ($('#ECS_COLLECT').hasClass("ect-colory") > 0) {
-            $('#ECS_COLLECT').removeClass("ect-colory")
+        if ($('#ECS_COLLECT').hasClass("active") > 0) {
+            $('#ECS_COLLECT').removeClass("active")
             $('#ECS_COLLECT i').addClass("fa-heart-o").removeClass("fa-heart");
         } else {
-            $('#ECS_COLLECT').addClass("ect-colory")
+            $('#ECS_COLLECT').addClass("active")
             $('#ECS_COLLECT i').addClass("fa-heart").removeClass("fa-heart-o");
         }
     }

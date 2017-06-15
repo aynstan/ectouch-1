@@ -41,7 +41,7 @@
 				</div>
 				{/if}
 				<div class="member-photo-address">
-					<a href="{:url('user/profile')}"><span>账户管理、收货地址 </span><i class="iconfont">&#xe60c;</i></a>
+					<!-- <a href="{:url('user/profile')}"><span>账户管理、收货地址 </span><i class="iconfont">&#xe60c;</i></a> -->
 				</div>
 			</div>
 			<div class="member-order">
@@ -67,38 +67,37 @@
 					</li> -->
 				</ul>
 			</div>
-			<div class="member-purse">
-				<div class="member-purse-title" onclick="window.location = '{:url('user/account_detail')}';">
-					<i class="iconfont fl member-purse-title-i">&#xe61b; </i><span>我的钱包</span><i class="iconfont fr member-order-i">&#xe60c;</i><span class="tip">资金管理</span>
-				</div>
-				<ul class="member-purse-list">
-					<li class="fl"><span><!--{if $list.user_money neq ''}--> {$list.user_money}<!--{else}-->0<!--{/if}--></span>
-						<p>余额</p>
-					</li>
-					<a href="{:url('user/bonus')}">
-					<li class="fl"><span><!--{if $list.bonus neq ''}--> {$list.bonus}<!--{else}-->0<!--{/if}--></span>
-						<p>红包</p>
-					</li>
-					</a>
-					<li class="fl"><span><!--{if $list.user_points neq ''}--> {$list.user_points}<!--{else}-->0<!--{/if}--></span>
-						<p>云币</p>
-					</li>
-				</ul>
-			</div>
+
 			<div class="clearfix">
 			</div>
 			<div class="member-serve">
 				<ul>
-					<li onclick="window.location = '{:url('index.php?m=default&c=user&a=bonus&u=0')}';"><i class="iconfont fl member-serve-li-oi">&#xe637;</i><p class="fl">红包兑换</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+
+
+					<li><i class="iconfont fl member-serve-li-oi">&#xe61b;</i><p class="fl">我的钱包</p><i class="iconfont fr member-order-i">{$list.user_money}</i></li>
+					<li onclick="window.location = '{:url('User/account_deposit')}';"><i class="iconfont fl member-serve-li-oi">&#xe61d;</i><p class="fl">{$lang.surplus_type_0}</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+					<li onclick="window.location = '{:url('user/account_detail')}';"><i class="iconfont fl member-serve-li-oi">&#xe625;</i><p class="fl">{$lang.add_surplus_log}</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+
+
+					<li onclick="window.location = '{:url('User/address_list')}';"><i class="iconfont fl member-serve-li-oi">&#xe637;</i><p class="fl">地址管理</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+					<li onclick="window.location = '{:url('User/collection_list')}';"><i class="iconfont fl member-serve-li-oi">&#xe62e;</i><p class="fl">我的收藏</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+					<li onclick="window.location = '{:url('User/service')}';"><i class="iconfont fl member-serve-li-oi">&#xe61a;</i><p class="fl">意见反馈</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+
+					<li onclick="window.location = '{:url('Flow/cart')}';"><i class="iconfont fl member-serve-li-oi">&#xe61c;</i><p class="fl">我的购物车</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+					<li onclick="window.location = '{:url('Article/info', array('aid'=> 5))}';"><i class="iconfont fl member-serve-li-oi">&#xe61e;</i><p class="fl">公司简介</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+
+
+<!-- 					<li onclick="window.location = '{:url('index.php?m=default&c=user&a=bonus&u=0')}';"><i class="iconfont fl member-serve-li-oi">&#xe637;</i><p class="fl">红包兑换</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
                     <li onclick="window.location = '{:url('user/profile')}';"><i class="iconfont fl member-serve-li-oi">&#xe62e;</i><p class="fl">请务必修改手机号</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
 					<li onclick="window.location = '{:url('user/service')}';"><i class="iconfont fl member-serve-li-oi">&#xe61a;</i><p class="fl">客户服务</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
-					<li onclick="window.location = '{:url('user/share')}'"><i class="iconfont fl member-serve-li-ti">&#xe61e;</i><p class="fl">我的分享</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>				
+					<li onclick="window.location = '{:url('user/share')}'"><i class="iconfont fl member-serve-li-ti">&#xe61e;</i><p class="fl">我的分享</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>	 -->			
 					<!--/*DRP_START*/-->
-					<li onclick="window.location = '{:url('store/check_store')}'" style="border-bottom:none"><i class="iconfont fl member-serve-li-ti">&#xe625;</i><p class="fl">我的微店</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+<!-- 					<li onclick="window.location = '{:url('store/check_store')}'" style="border-bottom:none"><i class="iconfont fl member-serve-li-ti">&#xe625;</i><p class="fl">我的微店</p><i class="iconfont fr member-order-i">&#xe60c;</i></li> -->
 					<!--/*DRP_END*/-->
 				</ul>
 			</div>
 			<!--{if $history}-->
+			<!--
 			<div class="member-record">
 				<div class="member-record-title">
 					<i class="iconfont fl member-record-title-i">&#xe624;</i>
@@ -106,18 +105,19 @@
 				</div>
 				<div class="member-record-silde">
 					<div class="member-record-silde-div">
-						<ul class="fl">
+						<ul class="fl">-->
 							<!-- {foreach from=$history item=val} -->
-							<li class="fl">
+							<!--<li class="fl">
 								<a href="{:url('goods/index', array('id'=>$this->_var[val]['goods_id']))}"><img src="{$val.goods_thumb}" /></a>
 								<p>{$val.goods_name}</p>
 								<span style="font-size: 0.9375rem;">{$lang.sort_price}：{$val.shop_price}</span>
-							</li>
+							</li>-->
 							<!-- {/foreach} -->
-						</ul>
+					<!--	</ul>
 					</div>
 				</div>
 			</div>
+			-->
 			<!--{/if}-->
 		</div>
 		<footer class="member-footer">
