@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="Generator" content="ECTouch 2.2.30" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <meta name="format-detection" content="telephone=no" />
 <meta charset="utf-8">
-<title>{$page_title}</title>
+<title><?php echo $this->_var['page_title']; ?></title>
 
 
 
@@ -49,19 +50,23 @@ html {
 
 
 <div class="con">
-	<!-- #BeginLibraryItem "/library/new_search_small.lbi" --><!-- #EndLibraryItem -->
+	<?php echo $this->fetch('library/new_search_small.lbi'); ?>
 	<aside>
-		<div class="menu-left scrollbar-none" id="sidebar"><h3 style="text-align:center; height:50px; line-height:50px">{$cat_name}</h3>
+		<div class="menu-left scrollbar-none" id="sidebar"><h3 style="text-align:center; height:50px; line-height:50px"><?php echo $this->_var['cat_name']; ?></h3>
 			<ul>
-				{foreach from=$category item="vo" name="vo"}
-				<li {if $smarty.foreach.vo.index == 0} class="active"{/if} rel="{$vo.cat_id}">
-				{$vo.cat_name}
-				{if $vo.use_price}
-					</br>{$vo.star}
-					</br>{$vo.category_price}/次
-				{/if}
+				<?php $_from = $this->_var['category']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'vo');$this->_foreach['vo'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['vo']['total'] > 0):
+    foreach ($_from AS $this->_var['vo']):
+        $this->_foreach['vo']['iteration']++;
+?>
+				<li <?php if (($this->_foreach['vo']['iteration'] - 1) == 0): ?> class="active"<?php endif; ?> rel="<?php echo $this->_var['vo']['cat_id']; ?>">
+				<?php echo $this->_var['vo']['cat_name']; ?>
+				<?php if ($this->_var['vo']['use_price']): ?>
+					</br><?php echo $this->_var['vo']['star']; ?>
+					</br><?php echo $this->_var['vo']['category_price']; ?>/次
+				<?php endif; ?>
 				</li>
-				{/foreach}
+				<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 			</ul>
 		</div>
 	</aside>
@@ -77,7 +82,7 @@ html {
 
 	<ul id="j-product-box">
 
-<!-- #BeginLibraryItem "/library/ajaxgoodslist.lbi" --><!-- #EndLibraryItem -->
+<?php echo $this->fetch('library/ajaxgoodslist.lbi'); ?>
 
 <!-- 		<%each list as vo%>
 		<li>
@@ -112,7 +117,7 @@ html {
 <form>
 
     <input type="hidden" name="sort_by" id="sort_by" value="sort_order">
-    <input type="hidden" name="cat_id" id="cat_id" value="{$id}">
+    <input type="hidden" name="cat_id" id="cat_id" value="<?php echo $this->_var['id']; ?>">
     <input type="hidden" name="page" id="page" value="1">
 
 
@@ -124,7 +129,7 @@ html {
 		<form action="javascript:searchGoods()" method="post">
 		<div class="text-all dis-box j-text-all">
 			<div class="box-flex input-text">
-				<input class="j-input-text" type="text" id="keywords" name="keywords" placeholder="{$lang.no_keywords}" />
+				<input class="j-input-text" type="text" id="keywords" name="keywords" placeholder="<?php echo $this->_var['lang']['no_keywords']; ?>" />
 				<i class="iconfont icon-guanbi is-null j-is-null"></i>
 			</div>
 			<button type="submit" class="btn-submit">搜索</button>
@@ -136,12 +141,14 @@ html {
 			<div class="swiper-wrapper">
 			<div class="swiper-slide">
 		<p>
-			<label class="fl">{$lang.hot_search}</label>
+			<label class="fl"><?php echo $this->_var['lang']['hot_search']; ?></label>
 		</p>
 		<ul class="hot-search a-text-more">
-			<!-- {foreach from=$hot_search_keywords item=keyword} -->
-			<li class="w-3"><a href="javascript:searchGoods('{$keyword}')"><span>{$keyword}</span></a></li>
-			<!-- {/foreach} -->
+			<?php $_from = $this->_var['hot_search_keywords']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'keyword');if (count($_from)):
+    foreach ($_from AS $this->_var['keyword']):
+?>
+			<li class="w-3"><a href="javascript:searchGoods('<?php echo $this->_var['keyword']; ?>')"><span><?php echo $this->_var['keyword']; ?></span></a></li>
+			<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 		</ul>
 		<p class="hos-search">
 			<label class="fl">最近搜索</label>
@@ -149,9 +156,11 @@ html {
 		</p>
 		
 			<ul class="hot-search a-text-more a-text-one" id="search_histroy">
-				<!-- {foreach from=$search_histroy item=keyword} -->
-				<li><a href="javascript:searchGoods('{$keyword}')"><span>{$keyword}</span></a></li>
-				<!-- {/foreach} -->
+				<?php $_from = $this->_var['search_histroy']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'keyword');if (count($_from)):
+    foreach ($_from AS $this->_var['keyword']):
+?>
+				<li><a href="javascript:searchGoods('<?php echo $this->_var['keyword']; ?>')"><span><?php echo $this->_var['keyword']; ?></span></a></li>
+				<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
 			</ul>
 			</div>
 			</div>
@@ -164,7 +173,7 @@ html {
 </div>
 
 
-<!-- #BeginLibraryItem "/library/new_page_footer.lbi" --><!-- #EndLibraryItem -->
+<?php echo $this->fetch('library/new_page_footer.lbi'); ?>
 
 
 
@@ -176,9 +185,9 @@ html {
 
 	$(function(){
 
-	   // var url = '{:url('category/async_list', array('id'=>$this->_var['id'], 'type'=>$this->_var['type'], 'brand'=>$this->_var['brand'], 'price_min'=>$this->_var['price_min'], 'filter_attr'=>$this->_var['filter_attr'], 'page'=>$this->_var['page'], 'sort'=>$this->_var['sort'], 'order'=>$this->_var['order'], 'keywords'=>$this->_var['keywords']))}';
-	   // $('.product-list').infinite({url: url,params:"brand={$brand}&price_min={$price_min}&price_max={$price_max}&filter_attr={$filter_attr}&keywords={$keywords}&type={$type}", template:'j-product'});
-	   var cat_id = "{$id}";
+	   // var url = '<?php echo url('category/async_list', array('id'=>$this->_var['id'], 'type'=>$this->_var['type'], 'brand'=>$this->_var['brand'], 'price_min'=>$this->_var['price_min'], 'filter_attr'=>$this->_var['filter_attr'], 'page'=>$this->_var['page'], 'sort'=>$this->_var['sort'], 'order'=>$this->_var['order'], 'keywords'=>$this->_var['keywords']));?>';
+	   // $('.product-list').infinite({url: url,params:"brand=<?php echo $this->_var['brand']; ?>&price_min=<?php echo $this->_var['price_min']; ?>&price_max=<?php echo $this->_var['price_max']; ?>&filter_attr=<?php echo $this->_var['filter_attr']; ?>&keywords=<?php echo $this->_var['keywords']; ?>&type=<?php echo $this->_var['type']; ?>", template:'j-product'});
+	   var cat_id = "<?php echo $this->_var['id']; ?>";
 		getAjaxGoods(cat_id,0);
 
 		$('#sidebar ul li').click(function(){
@@ -216,7 +225,7 @@ function searchGoods(keywords){
 	  	var param = "id="+cat_id+"&keywords="+keywords+"&page="+page+"&sort="+sort_by;  
 	  	$.ajax({
 			type:'get',
-			url:'{:url("category/getAjaxGoods")}',
+			url:'<?php echo url("category/getAjaxGoods");?>',
 			dataType: "json",
 			data:param,
 			// beforeSend:function() {  

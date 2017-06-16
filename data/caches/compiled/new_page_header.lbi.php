@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 <meta name="format-detection" content="telephone=no" />
 <meta charset="utf-8">
-<title>{$page_title}</title>
+<title><?php echo $this->_var['page_title']; ?></title>
 
 
 <link rel="stylesheet" href="__PUBLIC__/bootstrap/css/font-awesome.min.css">

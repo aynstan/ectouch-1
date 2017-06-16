@@ -1,6 +1,26 @@
 <!-- #BeginLibraryItem "/library/new_page_header.lbi" -->
 <!-- #EndLibraryItem -->
-<link rel="stylesheet" href="__TPL__/statics/css/calendar.css" />
+<link rel="stylesheet" href="__TPL__/statics/css/calendar.css?v=001" />
+
+<style>
+
+@font-face {
+  font-family: 'iconfont';
+  src: url("__TPL__/fonts/iconfont.eot");
+  /* IE9*/
+  src: url("__TPL__/fonts/iconfont.eot?#iefix") format("embedded-opentype"), url("__TPL__/fonts/iconfont.woff") format("woff"), url("__TPL__/fonts/iconfont.ttf") format("truetype"), url("__TPL__/fonts/iconfont.svg#iconfont") format("svg");
+  /* iOS 4.1- */ }
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 1.5rem;
+  color:#ffca01;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+</style>
+
+
 <div class="con">
 	<!--style="margin-bottom: 50px;"-->
 	<div class="goods">
@@ -14,7 +34,13 @@
 				<!-- #EndLibraryItem -->
 			</nav>
 		</div>
-
+<div class="nav-div">
+<ul>
+    <li class="goods-nav"><span class="nav-con active">商品</span></li>
+    <li class="goods-nav"><span class="nav-con"><a href="{:url('goods/info',array('id'=>$this->_var['goods']['goods_id']))}" >详情</a></span></li>
+	<li class="goods-nav"><span class="nav-con"><a href="{:url('goods/comment_list',array('id'=>$this->_var['goods']['goods_id']))}" >评论({$comments.count})</a></span></li>
+  </ul>
+</div>
 		<!--商品图片相册-->
 		<div class="goods-photo j-show-goods-img">
 			<div class="hd">
@@ -35,20 +61,13 @@
 			<div class="swiper-pagination"></div>
 		</div>
 
-		<!--选择日期-->
-		{if $use_calendar}
-		<div id="test" class="con-calendar">
-			<input type="hidden" name="date" id="date" value="">
-		</div>
-		{/if}
-		<!--选择日期end-->
 
 		<!--商品属性介绍-->
 		<div class="goods-info">
 			<!--商品描述-->
 			<section class="goods-title b-color-f padding-all ">
 				<div class="dis-box">
-					<h3 class="box-flex">{$goods.goods_style_name}</h3>
+					<h3 class="box-flex">{$goods.goods_style_name} &nbsp;&nbsp;{$star}</h3>
 		<!--点击收藏-->
 		<span class="heart j-heart <!--{if $sc eq 1}-->active<!--{/if}-->" onClick="collect({$goods.goods_id})" id='ECS_COLLECT'><i class="ts-2"></i><em class="ts-2">{$lang.btn_collect}</em></span>
 				</div>
@@ -78,10 +97,14 @@
 						<!-- <em class="em-promotion">5.8折</em></p> -->
 					{/if}
 
+				{if $use_calendar == 1}
+				<span style="font-size:1.4rem; text-align:right; float:right">{$lang.sort_sales}：{$sales_count}</span>
+				{else}
 				<p class=" dis-box g-p-tthree m-top06">
 					<span class="box-flex text-left">{$lang.sort_sales}：{$sales_count}</span>
 					<span class="box-flex text-right">库存 {$goods.goods_number}</span>
 				</p>
+				{/if}
 			</section>
 			<!-- {if $promotion} 优惠活动 -->
 			<section class="ect-margin-tb ect-margin-bottom0 ect-padding-tb goods-promotion ect-padding-lr ">
@@ -110,7 +133,21 @@
 			<!-- {/if} -->
 			<!--商品评价-->
 
-			<form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY">
+		<!--选择日期-->
+		{if $use_calendar}
+		<div><span style="font-size:1.3rem">{$goods.goods_brief}</span></div>
+
+		<span style="font-size:1.2rem">(友情提示：<font color="#1cbb7f">绿色</font>代表空档期，可以下单；<font color="orange">黄色</font>和<font color="red">红色</font>代表已被下单)</span>
+		<div id="test" class="con-calendar">
+			<input type="hidden" name="date" id="date" value="">
+		</div>
+		{/if}
+		<!--选择日期end-->
+
+
+
+
+			<form action="javascript:addToCart({$goods.goods_id})" method="post" name="ECS_FORMBUY" id="ECS_FORMBUY" {if $use_calendar == 1} style="display:none" {/if}>
 				<section class="goods-more-a">
 					<!--  <a class="ect-padding-lr ect-padding-tb" href="{:url('goods/info',array('id'=>$this->_var['goods']['goods_id']))}"><span class="Text">{$lang.goods_brief}</span> <span class="pull-right"><i class="fa fa-chevron-right"></i></span></a> 
       <a class="ect-padding-lr ect-padding-tb" href="{:url('goods/comment_list',array('id'=>$this->_var['goods']['goods_id']))}"><span class="Text">{$lang.goods_comment}</span> <span class="pull-right"><span class="ect-color">{$comments.count}</span>{$lang.comment_num} <span class="ect-color">{$comments.favorable}%</span>{$lang.favorable_comment} <i class="fa fa-chevron-right"></i></span></a>  -->
@@ -118,8 +155,8 @@
 				
 				<section class="m-top1px padding-all b-color-f goods-attr j-goods-attr j-show-div">
 					<div class="dis-box">
-						<label class="t-remark g-t-temark">已选</label>
-						<div class="box-flex t-goods1 ">请选择</div>
+						<label class="t-remark g-t-temark"><span style="color: #efefef;font-size: 1.8rem; background-color: #ea2d2d; padding: 0.2rem 2rem">选择</span></label>
+						<div class="box-flex t-goods1 "></div>
 						<span class="t-jiantou"><i class="iconfont icon-jiantou tf-180"></i></span>
 					</div>
 					<!--商品属性弹出层star-->
@@ -179,48 +216,6 @@
 					<!--商品属性弹出层end-->
 			</section>
 			<!--comment-->
-		<section class="m-top04 goods-evaluation">
-			<a href="{:url('goods/comment_list',array('id'=>$this->_var['goods']['goods_id']))}">
-				<div class="dis-box padding-all b-color-f  g-evaluation-title">
-					<label class="t-remark g-t-temark">用户评价</label>
-					<div class="box-flex t-goods1">好评率 <em class="t-first">{$comments.favorable}%</em></div>
-					<div class="t-goods1"><em class="t-first">{$goods.comment_count}</em><span class="t-jiantou">{$comments.count}人评论<i class="iconfont icon-jiantou tf-180"></i></span></div>
-				</div>
-			</a>
-			<div class="padding-all m-top1px b-color-f g-evaluation-con">
-				<!--{foreach from=$comment_list item="comment" name="com"}-->
-				<!--{if $smarty.foreach.com.index<5}-->
-				<div class="of-hidden evaluation-list">
-					<div class="of-hidden ">
-						<p class="fl"><span class="grade-star g-star-{$comment.rank} fl"></span><em class="t-remark fl"><!--{if $comment.user_name}-->{$comment.user_name|escape:html}<!--{else}-->{$lang.anonymous}<!--{/if}--></em></p>
-						<p class="fr t-remark">{$comment.add_time}</p>
-					</div>
-					<p class="clear m-top10 t-goods1">{$comment.content}</p>
-					<!-- {if $comment.re_content} -->
-						  <p><font class="f1">{$lang.admin_username}</font>{$comment.re_content}</p>
-					<!-- {/if} -->
-					<p style="display:none;" class="clear m-top08 t-remark">颜色分类：70cm、5144蓝色</p>
-				</div>
-				<!--{/if}-->
-				<!--{/foreach}-->
-				<!--<div class="of-hidden evaluation-list">
-					<div class="of-hidden ">
-						<p class="fl"><span class="grade-star g-star-5 fl"></span><em class="t-remark fl">s****y</em></p>
-						<p class="fr t-remark">2015-08-09 10:46:43</p>
-					</div>
-					<p class="clear m-top10 t-goods1">很好看，大小刚刚好 很好看</p>
-					<p class="clear m-top08 t-remark">颜色分类：70cm、5144蓝色</p>
-					<div class="ect-button-more m-top10 dis-box">
-						<a class="box-flex btn-default">有图评价</a>
-						<a href="{:url('goods/comment_list',array('id'=>$this->_var['goods']['goods_id']))}" class="box-flex btn-default">全部评价</a>
-					</div>
-				</div>-->
-			</div>
-		</section>
-		<section class="padding-all text-center t-remark2 ">
-			<a href="{:url('goods/info',array('id'=>$this->_var['goods']['goods_id']))}" class="j-goodsinfo-div">点击查看商品详情</a>
-		</section>
-
 		</form>
 		
 	</div>
@@ -378,6 +373,10 @@ $(function() {
 			}
 		});
 	});
+
+	function new_addTocart(){
+		$('.j-show-div').trigger("click");
+	}
 </script>
 </body>
 

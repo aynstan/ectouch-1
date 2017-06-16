@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<meta name="Generator" content="ECTouch 2.2.30" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>{$page_title}</title>
+<title><?php echo $this->_var['page_title']; ?></title>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/swiper/css/swiper.min.css"/>
 <link rel="stylesheet" href="__PUBLIC__/bootstrap/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="__TPL__/css/index.css?v=0003213"/>
@@ -27,7 +28,7 @@
 <body>
 <div class="con">
 <div class="index-max-box">
-{if !$subscribe}
+<?php if (! $this->_var['subscribe']): ?>
 <div class="ect-attention dis-box" >
 	<div class="attention-text box-flex">
 		<p style="font-size: 1rem;"><span style="color:#fff">欢迎进入</span><span style="color:#57C850"> 微商城</span></p>
@@ -37,9 +38,9 @@
 		<a class='lizhuanz'><button class="button">立即关注</button></a>
 	</div>
 </div>
-{/if}
+<?php endif; ?>
 <header class="index-header comWidth">
-  <i class="index-header-menu iconfont fl" onclick="window.location = '{:url('category/top_all')}'">&#xe627;</i>
+  <i class="index-header-menu iconfont fl" onclick="window.location = '<?php echo url('category/top_all');?>'">&#xe627;</i>
   <div class="index-search-box fl">
     <input type="text" class="index-search-input" placeholder="商品搜索" onclick="openSearch();">
     <a href="javascript:void(0)" id="translateVoice" style="display:None;"><i class="index-search-sound iconfont fr">&#xe623;</i></a>
@@ -47,7 +48,7 @@
   <a href="javascript:openSearch()"><i class="index-header-right iconfont fr">&#xe603;</i></a>
 </header>
 </div>
-<!--立即关注-->
+
 <div class="index-guanz-t"> 
 	<div class="index-guanz-show">		
 		<img src="__TPL__/images/guanzm.png">
@@ -60,48 +61,80 @@
 <div class="index-main comWidth">
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        {insert name='ads' id=255 num=3}
+        <?php 
+$k = array (
+  'name' => 'ads',
+  'id' => '255',
+  'num' => '3',
+);
+echo $this->_echash . $k['name'] . '|' . serialize($k) . $this->_echash;
+?>
       </div>
       <div class="swiper-pagination"></div>
     </div>
     <div class="index-menu">
     <ul class="index-menu-ul">
-    <!--{foreach from=$navigator item=nav}-->
-    <li class="fl"><a href="{$nav.url}" {if $nav.opennew eq 1}target = "_blank"{/if}><img src="{$nav.pic}" /></a><a class="index-menu-text" href="{$nav.url}" {if $nav.opennew eq 1}target = "_blank"{/if}>{$nav.name}</a>
+    <?php $_from = $this->_var['navigator']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'nav');if (count($_from)):
+    foreach ($_from AS $this->_var['nav']):
+?>
+    <li class="fl"><a href="<?php echo $this->_var['nav']['url']; ?>" <?php if ($this->_var['nav']['opennew'] == 1): ?>target = "_blank"<?php endif; ?>><img src="<?php echo $this->_var['nav']['pic']; ?>" /></a><a class="index-menu-text" href="<?php echo $this->_var['nav']['url']; ?>" <?php if ($this->_var['nav']['opennew'] == 1): ?>target = "_blank"<?php endif; ?>><?php echo $this->_var['nav']['name']; ?></a>
 	</li>
-    <!--{/foreach}-->
+    <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
     </ul>
     </div>
 
   <div class="index-recom">
       <div class="index-recom-left fl">
-        {insert name='ads' id=257 num=2}
+        <?php 
+$k = array (
+  'name' => 'ads',
+  'id' => '257',
+  'num' => '2',
+);
+echo $this->_echash . $k['name'] . '|' . serialize($k) . $this->_echash;
+?>
       </div>
       <div class="index-recom-right fr">
-        {insert name='ads' id=258 num=2}
+        <?php 
+$k = array (
+  'name' => 'ads',
+  'id' => '258',
+  'num' => '2',
+);
+echo $this->_echash . $k['name'] . '|' . serialize($k) . $this->_echash;
+?>
       </div>
   </div>
   <div class="index-theme">
   	<ul>
-    	{insert name='ads' id=256 num=2}
+    	<?php 
+$k = array (
+  'name' => 'ads',
+  'id' => '256',
+  'num' => '2',
+);
+echo $this->_echash . $k['name'] . '|' . serialize($k) . $this->_echash;
+?>
     </ul>
   </div>
 
   <div class="index-theme" style="display:none">
       <ul class="index-more-list">
-      <!-- #BeginLibraryItem "/library/cat_goods.lbi" --><!-- #EndLibraryItem -->
+      <?php echo $this->fetch('library/cat_goods.lbi'); ?>
       </ul>
   </div>
       <div class="con-index">新品展示</div>
       <ul class="index-more-list" id="J_ItemList">
 
-        {foreach from=$new_goods_list item=goods_new}
+        <?php $_from = $this->_var['new_goods_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods_new');if (count($_from)):
+    foreach ($_from AS $this->_var['goods_new']):
+?>
           <li class="f1">
-            <a href="{$goods_new.url}"><img src="{$goods_new.goods_img}" alt="{$goods_new.name}" /></a>
-            <a href="{$goods_new.url}"><p>{$goods_new.name}</p></a>
-            <span class="goods-price"><!--{if $goods_new.promote_price}-->{$goods_new.promote_price}<!--{else}-->{$goods_new.shop_price}<!--{/if}--></span>
+            <a href="<?php echo $this->_var['goods_new']['url']; ?>"><img src="<?php echo $this->_var['goods_new']['goods_img']; ?>" alt="<?php echo $this->_var['goods_new']['name']; ?>" /></a>
+            <a href="<?php echo $this->_var['goods_new']['url']; ?>"><p><?php echo $this->_var['goods_new']['name']; ?></p></a>
+            <span class="goods-price"><?php if ($this->_var['goods_new']['promote_price']): ?><?php echo $this->_var['goods_new']['promote_price']; ?><?php else: ?><?php echo $this->_var['goods_new']['shop_price']; ?><?php endif; ?></span>
           </li>
-        {/foreach}
+        <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
       </ul>
 
 
@@ -109,26 +142,28 @@
       <div class="con-index">主持人推荐</div>
       <ul class="index-more-list" id="J_ItemList1">
 
-        {foreach from=$best_goods_list item=goods_best}
+        <?php $_from = $this->_var['best_goods_list']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods_best');if (count($_from)):
+    foreach ($_from AS $this->_var['goods_best']):
+?>
           <li class="f1">
-            <a href="{$goods_best.url}"><img src="{$goods_best.goods_img}" alt="{$goods_best.name}" /></a>
-            <a href="{$goods_best.url}"><p>{$goods_best.name}</p></a>
-            <span>{$goods_best.star}</span>
-            <!-- <span class="goods-price">{$goods_best.shop_price}</span> -->
+            <a href="<?php echo $this->_var['goods_best']['url']; ?>"><img src="<?php echo $this->_var['goods_best']['goods_img']; ?>" alt="<?php echo $this->_var['goods_best']['name']; ?>" /></a>
+            <a href="<?php echo $this->_var['goods_best']['url']; ?>"><p><?php echo $this->_var['goods_best']['name']; ?></p></a>
+            <span><?php echo $this->_var['goods_best']['star']; ?></span>
+            <!-- <span class="goods-price"><?php echo $this->_var['goods_best']['shop_price']; ?></span> -->
           </li>
-        {/foreach}
+        <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
       </ul>
   </div>
 </div>
 
 <footer class="index-footer comWidth">
-	<!-- #BeginLibraryItem "/library/page_index_menu.lbi" --><!-- #EndLibraryItem -->
+	<?php echo $this->fetch('library/page_index_menu.lbi'); ?>
 </footer>
 </div>
-<!-- #BeginLibraryItem "/library/search_index.lbi" --><!-- #EndLibraryItem -->
-<!-- #BeginLibraryItem "/library/page_footer.lbi" --><!-- #EndLibraryItem -->
+<?php echo $this->fetch('library/search_index.lbi'); ?>
+<?php echo $this->fetch('library/page_footer.lbi'); ?>
 <script type="text/javascript">
-get_asynclist("{:url('index/ajax_goods', array('type'=>'best'))}" , '__TPL__/images/loader.gif');
+get_asynclist("<?php echo url('index/ajax_goods', array('type'=>'best'));?>" , '__TPL__/images/loader.gif');
 </script>
 <script>
 	/*立即关注*/

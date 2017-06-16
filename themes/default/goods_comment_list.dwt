@@ -18,8 +18,20 @@
     <nav class="ect-nav ect-nav-list" style="display:none;"> <!-- #BeginLibraryItem "/library/page_menu.lbi" --><!-- #EndLibraryItem --> </nav>
   </div>
 
+
+
+<div class="nav-div nav-fix">
+<ul>
+    <li class="goods-nav"><span class="nav-con"><a href="{:url('goods/index',array('id'=>$this->_var['id']))}" >商品</a></span></li>
+    <li class="goods-nav"><span class="nav-con"><a href="{:url('goods/info',array('id'=>$this->_var['id']))}" >详情</span></li>
+	<li class="goods-nav"><span class="nav-con active">评论({$comments.count})</a></span></li>
+  </ul>
+</div>
+
+
+
   <div class="goods-evaluation-page of-hidden ect-tab j-ect-tab">
-	<div class="hd j-tab-title tab-title b-color-f of-hidden" style="margin-top:4rem;">
+	<div class="hd j-tab-title tab-title b-color-f of-hidden" style="margin-top:8.8rem;">
 		<ul class="dis-box">
 			<li class="box-flex {if $type == 1}active{/if}"><a href="{:url('goods/comment_list',array('type'=>1,'id'=>$this->_var['id'],'page'=>1))}">{$lang.all_comment}</a><em class="dis-block m-top04">{$comments_info.count}</em></li>
 			<li class="box-flex {if $type == 2}active{/if}"><a href="{:url('goods/comment_list',array('type'=>2,'id'=>$this->_var['id'],'page'=>1))}">{$lang.favorable_comment}</a><em class="dis-block m-top04">{$comments_info.favorable_count}</em></li>
@@ -69,7 +81,6 @@
 	 <!-- {/if} -->
 </ul>
 </div>
-  <footer class="logo"><a href="http://www.ectouch.cn" title="ECTouch官网" target="_blank"><img src="__TPL__/images/copyright.png" width="176" height="60"></a></footer>
 
 <script src="__PUBLIC__/bootstrap/js/bootstrap.min.js"></script>
 <!-- #BeginLibraryItem "/library/new_search.lbi" --><!-- #EndLibraryItem --> <!-- #BeginLibraryItem "/library/new_page_footer.lbi" --><!-- #EndLibraryItem -->
@@ -95,13 +106,7 @@
 	var goodsId = 3;
 	var now_time = 1453767623;
 	var use_how_oos = 1;
-	onload = function() {
-		changePrice(2);
-		fixpng();
-		try {
-			onload_leftTime();
-		} catch (e) {}
-	}
+
 
 	function back_goods_number() {
 		var goods_number = document.getElementById('goods_number').value;
