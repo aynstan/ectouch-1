@@ -37,7 +37,10 @@ class GoodsController extends CommonController
         // 获得商品的信息
         $goods = model('Goods')->get_goods_info($this->goods_id);
 
-
+        // 商品所对应的星级
+        $star = model('Category')->get_star($goods['cat_id']);
+        $this->assign('star', $star);
+        // echo $star;die();
         // 是否使用日历预约控件
         $parent_id = model('Category')->get_parent_id($goods['cat_id']);
         $use_calendar = 0;
@@ -175,6 +178,10 @@ class GoodsController extends CommonController
         $this->assign('meta_keywords', htmlspecialchars($goods['keywords']));
         $this->assign('meta_description', htmlspecialchars($goods['goods_brief']));
 
+        $comments = model('Comment')->get_comment_info($this->goods_id, 0);
+
+        $this->assign('comments', $comments);
+
         $this->assign('goods', $goods);
         $properties = model('Goods')->get_goods_properties($this->goods_id);  // 获得商品的规格和属性
         $this->assign('properties', $properties['pro']);                      // 商品属性
@@ -216,6 +223,9 @@ class GoodsController extends CommonController
         if(count($comment_list)/$size < $cmt->page){
             $this->assign('is_page', 1);
         }
+        $comments = model('Comment')->get_comment_info($this->goods_id, 0);
+
+        $this->assign('comments', $comments);
         $this->assign('pager', $cmt->page);
         $this->assign('title', L('goods_comment'));
         $this->display('goods_comment_list.dwt');

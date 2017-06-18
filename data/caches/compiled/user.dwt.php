@@ -42,7 +42,11 @@
 				</div>
 				<?php endif; ?>
 				<div class="member-photo-address">
+<<<<<<< HEAD
 					<a href="<?php echo url('user/profile');?>"><span>账户管理、收货地址 </span><i class="iconfont">&#xe60c;</i></a>
+=======
+					<!-- <a href="<?php echo url('user/profile');?>"><span>账户管理、收货地址 </span><i class="iconfont">&#xe60c;</i></a> -->
+>>>>>>> 9749af8c9cadf0ae6d60ba2a7fa3c83112f4da32
 				</div>
 			</div>
 			<div class="member-order">
@@ -68,6 +72,7 @@
 					</li> -->
 				</ul>
 			</div>
+<<<<<<< HEAD
 			<div class="member-purse">
 				<div class="member-purse-title" onclick="window.location = '<?php echo url('user/account_detail');?>';">
 					<i class="iconfont fl member-purse-title-i">&#xe61b; </i><span>我的钱包</span><i class="iconfont fr member-order-i">&#xe60c;</i><span class="tip">资金管理</span>
@@ -86,20 +91,51 @@
 					</li>
 				</ul>
 			</div>
+=======
+
+>>>>>>> 9749af8c9cadf0ae6d60ba2a7fa3c83112f4da32
 			<div class="clearfix">
 			</div>
 			<div class="member-serve">
 				<ul>
+<<<<<<< HEAD
 					<li onclick="window.location = '<?php echo url('index.php?m=default&c=user&a=bonus&u=0');?>';"><i class="iconfont fl member-serve-li-oi">&#xe637;</i><p class="fl">红包兑换</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
                     <li onclick="window.location = '<?php echo url('user/profile');?>';"><i class="iconfont fl member-serve-li-oi">&#xe62e;</i><p class="fl">请务必修改手机号</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
 					<li onclick="window.location = '<?php echo url('user/service');?>';"><i class="iconfont fl member-serve-li-oi">&#xe61a;</i><p class="fl">客户服务</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
 					<li onclick="window.location = '<?php echo url('user/share');?>'"><i class="iconfont fl member-serve-li-ti">&#xe61e;</i><p class="fl">我的分享</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>				
 					
 					<li onclick="window.location = '<?php echo url('store/check_store');?>'" style="border-bottom:none"><i class="iconfont fl member-serve-li-ti">&#xe625;</i><p class="fl">我的微店</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+=======
+
+
+					<li><i class="iconfont fl member-serve-li-oi">&#xe61b;</i><p class="fl">我的钱包</p><i class="iconfont fr member-order-i"><?php echo $this->_var['list']['user_money']; ?></i></li>
+					<li onclick="window.location = '<?php echo url('User/account_deposit');?>';"><i class="iconfont fl member-serve-li-oi">&#xe61d;</i><p class="fl"><?php echo $this->_var['lang']['surplus_type_0']; ?></p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+					<li onclick="window.location = '<?php echo url('user/account_detail');?>';"><i class="iconfont fl member-serve-li-oi">&#xe625;</i><p class="fl"><?php echo $this->_var['lang']['add_surplus_log']; ?></p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+
+
+					<li onclick="window.location = '<?php echo url('User/address_list');?>';"><i class="iconfont fl member-serve-li-oi">&#xe637;</i><p class="fl">地址管理</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+					<li onclick="window.location = '<?php echo url('User/collection_list');?>';"><i class="iconfont fl member-serve-li-oi">&#xe62e;</i><p class="fl">我的收藏</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+					<li onclick="window.location = '<?php echo url('User/service');?>';"><i class="iconfont fl member-serve-li-oi">&#xe61a;</i><p class="fl">意见反馈</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+
+					<li onclick="window.location = '<?php echo url('Flow/cart');?>';"><i class="iconfont fl member-serve-li-oi">&#xe61c;</i><p class="fl">我的购物车</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+					<li onclick="window.location = '<?php echo url('Article/info', array('aid'=> 5));?>';"><i class="iconfont fl member-serve-li-oi">&#xe61e;</i><p class="fl">公司简介</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+
+
+<!-- 					<li onclick="window.location = '<?php echo url('index.php?m=default&c=user&a=bonus&u=0');?>';"><i class="iconfont fl member-serve-li-oi">&#xe637;</i><p class="fl">红包兑换</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+                    <li onclick="window.location = '<?php echo url('user/profile');?>';"><i class="iconfont fl member-serve-li-oi">&#xe62e;</i><p class="fl">请务必修改手机号</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+					<li onclick="window.location = '<?php echo url('user/service');?>';"><i class="iconfont fl member-serve-li-oi">&#xe61a;</i><p class="fl">客户服务</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>
+					<li onclick="window.location = '<?php echo url('user/share');?>'"><i class="iconfont fl member-serve-li-ti">&#xe61e;</i><p class="fl">我的分享</p><i class="iconfont fr member-order-i">&#xe60c;</i></li>	 -->			
+					
+<!-- 					<li onclick="window.location = '<?php echo url('store/check_store');?>'" style="border-bottom:none"><i class="iconfont fl member-serve-li-ti">&#xe625;</i><p class="fl">我的微店</p><i class="iconfont fr member-order-i">&#xe60c;</i></li> -->
+>>>>>>> 9749af8c9cadf0ae6d60ba2a7fa3c83112f4da32
 					
 				</ul>
 			</div>
 			<?php if ($this->_var['history']): ?>
+<<<<<<< HEAD
+=======
+			<!--
+>>>>>>> 9749af8c9cadf0ae6d60ba2a7fa3c83112f4da32
 			<div class="member-record">
 				<div class="member-record-title">
 					<i class="iconfont fl member-record-title-i">&#xe624;</i>
@@ -107,6 +143,7 @@
 				</div>
 				<div class="member-record-silde">
 					<div class="member-record-silde-div">
+<<<<<<< HEAD
 						<ul class="fl">
 							<?php $_from = $this->_var['history']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'val');if (count($_from)):
     foreach ($_from AS $this->_var['val']):
@@ -121,6 +158,23 @@
 					</div>
 				</div>
 			</div>
+=======
+						<ul class="fl">-->
+							<?php $_from = $this->_var['history']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'val');if (count($_from)):
+    foreach ($_from AS $this->_var['val']):
+?>
+							<!--<li class="fl">
+								<a href="<?php echo url('goods/index', array('id'=>$this->_var[val]['goods_id']));?>"><img src="<?php echo $this->_var['val']['goods_thumb']; ?>" /></a>
+								<p><?php echo $this->_var['val']['goods_name']; ?></p>
+								<span style="font-size: 0.9375rem;"><?php echo $this->_var['lang']['sort_price']; ?>：<?php echo $this->_var['val']['shop_price']; ?></span>
+							</li>-->
+							<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+					<!--	</ul>
+					</div>
+				</div>
+			</div>
+			-->
+>>>>>>> 9749af8c9cadf0ae6d60ba2a7fa3c83112f4da32
 			<?php endif; ?>
 		</div>
 		<footer class="member-footer">

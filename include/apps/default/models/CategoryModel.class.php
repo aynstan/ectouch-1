@@ -38,7 +38,11 @@ class CategoryModel extends BaseModel {
      * @return void
      */
     function get_cat_list($cat_id = 0) {
-        return $this->query('SELECT * FROM ' . $this->pre . "category WHERE is_show = '1' and parent_id = '$cat_id'");
+        $list = $this->query('SELECT * FROM ' . $this->pre . "category WHERE is_show = '1' and parent_id = '$cat_id'");
+        foreach ($list as $key => $value) {
+            $list[$key]['star'] = $this->get_star($value['cat_id']);
+        }
+        return $list;
     }
 
     /**
@@ -290,7 +294,7 @@ class CategoryModel extends BaseModel {
     function assign_cat_goods($cat_id, $num = 0, $from = 'web', $order_rule = '', $type='') {
         $children = get_children($cat_id);
 
-        $sql = 'SELECT g.goods_id, g.goods_name, g.market_price, g.shop_price AS org_price, ' .
+        $sql = 'SELECT g.goods_id, g.goods_name, g.market_price, g.cat_id, g.shop_price AS org_price, ' .
                 "IFNULL(mp.user_price, g.shop_price * '$_SESSION[discount]') AS shop_price, " .
                 'g.promote_price, promote_start_date, promote_end_date, g.goods_brief, g.goods_thumb, g.goods_img, c.start ' .
                 "FROM " . $this->pre . 'goods AS g ' .
@@ -330,6 +334,7 @@ class CategoryModel extends BaseModel {
             $goods[$idx]['thumb'] = get_image_path($row['goods_id'], $row['goods_thumb'], true);
             $goods[$idx]['goods_img'] = get_image_path($row['goods_id'], $row['goods_img']);
             $goods[$idx]['url'] = url('goods/index', array('id' => $row['goods_id']));
+            $goods[$idx]['star'] = $this->get_star($row['cat_id']);
         }
         return $goods;
     }
@@ -367,5 +372,18 @@ class CategoryModel extends BaseModel {
         $cat = $this->row("SELECT parent_id FROM ". $this->pre . "category WHERE cat_id = '$cat_id'");
         return  $cat['parent_id'];
     }
+
+    /**
+     * 获取星星图标
+     */
+    function get_star($cat_id){
+        $cat = $this->row("SELECT start FROM ". $this->pre . "category WHERE cat_id = '$cat_id'");
+        $str = '';
+        for ($i=0; $i < $cat['start']; $i++) { 
+            $str .= '<i class="iconfont">&#xe62e;</i>';
+        }
+        return $str;
+    }
+
 	
 }
