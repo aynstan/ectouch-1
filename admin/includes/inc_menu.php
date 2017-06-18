@@ -85,17 +85,17 @@ $modules['05_menu_content']['02_articlecat_list']        = 'articlecat.php?act=l
 
 // 营销
 //$modules['06_menu_promotion']['02_snatch_list']          = 'snatch.php?act=list';
-$modules['06_menu_promotion']['04_bonustype_list']       = 'bonus.php?act=list';
+// $modules['06_menu_promotion']['04_bonustype_list']       = 'bonus.php?act=list';
 // $modules['06_menu_promotion']['06_pack_list']            = 'pack.php?act=list';
 // $modules['06_menu_promotion']['07_card_list']            = 'card.php?act=list';
-$modules['06_menu_promotion']['08_group_buy']            = 'group_buy.php?act=list';
+// $modules['06_menu_promotion']['08_group_buy']            = 'group_buy.php?act=list';
 // $modules['06_menu_promotion']['09_topic']                = 'topic.php?act=list';
 //$modules['06_menu_promotion']['10_auction']              = 'auction.php?act=list';
-$modules['06_menu_promotion']['12_favourable']           = 'favourable.php?act=list';
+// $modules['06_menu_promotion']['12_favourable']           = 'favourable.php?act=list';
 //$modules['06_menu_promotion']['13_wholesale']            = 'wholesale.php?act=list';
 //$modules['06_menu_promotion']['14_package_list']         = 'package.php?act=list';
 //$modules['03_promotion']['ebao_commend']            = 'ebao_commend.php?act=list';
-$modules['06_menu_promotion']['15_exchange_goods']       = 'exchange_goods.php?act=list';
+// $modules['06_menu_promotion']['15_exchange_goods']       = 'exchange_goods.php?act=list';
 
 // 报表
 $modules['07_menu_stats']['flow_stats']                  = 'flow_stats.php?act=view';
@@ -110,12 +110,12 @@ $modules['07_menu_stats']['report_users']                = 'users_order.php?act=
 //$modules['07_menu_stats']['visit_buy_per']               = 'visit_sold.php?act=list';
 
 // 模板
-$modules['08_menu_template']['02_template_select']       = 'template.php?act=list';
+// $modules['08_menu_template']['02_template_select']       = 'template.php?act=list';
 // $modules['08_menu_template']['03_template_setup']        = 'template.php?act=setup';
 // $modules['08_menu_template']['04_template_library']      = 'template.php?act=library';
-$modules['08_menu_template']['05_edit_languages']        = 'edit_languages.php?act=list';
+// $modules['08_menu_template']['05_edit_languages']        = 'edit_languages.php?act=list';
 // $modules['08_menu_template']['06_template_backup']       = 'template.php?act=backup_setting';
-$modules['08_menu_template']['mail_template_manage']     = 'mail_template.php?act=list';
+// $modules['08_menu_template']['mail_template_manage']     = 'mail_template.php?act=list';
 
 // 数据库
 $modules['09_menu_backup']['02_db_manage']               = 'database.php?act=backup';
@@ -154,15 +154,15 @@ $modules['10_menu_tools']['99_upgrade']                 = '../index.php?m=admin&
 
 /*DRP_START*/
 // 微分销
-$modules['11_menu_rec']['01_drp_config']                      = 'drp.php?act=config';
-$modules['11_menu_rec']['02_drp_audit']                       = 'drp.php?act=users_audit';
-$modules['11_menu_rec']['02_drp_users']                       = 'drp.php?act=users';
-$modules['11_menu_rec']['03_drp']                             = 'drp.php?act=list';
-$modules['11_menu_rec']['04_order_list']                      = 'drp.php?act=order_list';
-$modules['11_menu_rec']['05_affiliate']                       = 'affiliate.php?act=list';
-$modules['11_menu_rec']['06_affiliate_ck']                    = 'affiliate_ck.php?act=list';
-$modules['11_menu_rec']['07_ranking']                         = 'drp.php?act=ranking';
-$modules['11_menu_rec']['08_drp_log']                         = 'drp.php?act=drp_log';
+// $modules['11_menu_rec']['01_drp_config']                      = 'drp.php?act=config';
+// $modules['11_menu_rec']['02_drp_audit']                       = 'drp.php?act=users_audit';
+// $modules['11_menu_rec']['02_drp_users']                       = 'drp.php?act=users';
+// $modules['11_menu_rec']['03_drp']                             = 'drp.php?act=list';
+// $modules['11_menu_rec']['04_order_list']                      = 'drp.php?act=order_list';
+// $modules['11_menu_rec']['05_affiliate']                       = 'affiliate.php?act=list';
+// $modules['11_menu_rec']['06_affiliate_ck']                    = 'affiliate_ck.php?act=list';
+// $modules['11_menu_rec']['07_ranking']                         = 'drp.php?act=ranking';
+// $modules['11_menu_rec']['08_drp_log']                         = 'drp.php?act=drp_log';
 /*DRP_END*/
 
 // 微信通

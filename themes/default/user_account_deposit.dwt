@@ -1,10 +1,12 @@
 <!-- #BeginLibraryItem "/library/user_header.lbi" --><!-- #EndLibraryItem -->
+<!--
 <ul class="nav nav-tabs account" role="tablist">
     <li><a href="{:url('User/account_detail')}" >{$lang.add_surplus_log}</a></li>
     <li><a href="{:url('User/account_log')}" >{$lang.view_application}</a></li>
 	<li class="active"><a href="{:url('User/account_deposit')}" >{$lang.surplus_type_0}</a></li>
 	<li><a href="{:url('User/account_raply')}" >{$lang.surplus_type_1}</a></li>
   </ul>
+  -->
 <form action="{:url('user/act_account')}" method="post" name="theForm" >
   <div class="ect-bg-colorf flow-consignee" style="margin-bottom:0.6em;">
     <ul class="o-info">

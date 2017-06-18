@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="__PUBLIC__/bootstrap/css/font-awesome.min.css">
 <link rel="stylesheet" href="__PUBLIC__/swiper/css/swiper.min.css"/>
 <link rel="stylesheet" href="__TPL__/css/photoswipe.css">
-<link rel="stylesheet" href="__TPL__/css/style.css">
+<link rel="stylesheet" href="__TPL__/css/style.css?v=112">
 <script type="text/javascript" src="__TPL__/js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="__TPL__/js/ectouch.js"></script>
 </head>
