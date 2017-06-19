@@ -11,8 +11,6 @@
 <link rel="stylesheet" type="text/css" href="__TPL__/css/search_index.css"/>
 <style type="text/css">
   .swiper-wrapper .swiper-pagination-bullet-active {background: #1CBB7F;}
-<<<<<<< HEAD
-=======
 
 .iconfont {
   font-family: "iconfont" !important;
@@ -25,7 +23,6 @@
 
 
 
->>>>>>> 9749af8c9cadf0ae6d60ba2a7fa3c83112f4da32
 </style>
 </head>
 <body>
@@ -151,12 +148,8 @@ echo $this->_echash . $k['name'] . '|' . serialize($k) . $this->_echash;
           <li class="f1">
             <a href="<?php echo $this->_var['goods_best']['url']; ?>"><img src="<?php echo $this->_var['goods_best']['goods_img']; ?>" alt="<?php echo $this->_var['goods_best']['name']; ?>" /></a>
             <a href="<?php echo $this->_var['goods_best']['url']; ?>"><p><?php echo $this->_var['goods_best']['name']; ?></p></a>
-<<<<<<< HEAD
-            <span class="goods-price"><?php if ($this->_var['goods_best']['promote_price']): ?><?php echo $this->_var['goods_best']['promote_price']; ?><?php else: ?><?php echo $this->_var['goods_best']['shop_price']; ?><?php endif; ?></span>
-=======
             <span><?php echo $this->_var['goods_best']['star']; ?></span>
             <!-- <span class="goods-price"><?php echo $this->_var['goods_best']['shop_price']; ?></span> -->
->>>>>>> 9749af8c9cadf0ae6d60ba2a7fa3c83112f4da32
           </li>
         <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
       </ul>

@@ -1,10 +1,10 @@
-<?php exit;?>a:3:{s:8:"template";a:5:{i:0;s:39:"D:/WWW/ectouch/themes/default/index.dwt";i:1;s:51:"D:/WWW/ectouch/themes/default/library/cat_goods.lbi";i:2;s:57:"D:/WWW/ectouch/themes/default/library/page_index_menu.lbi";i:3;s:54:"D:/WWW/ectouch/themes/default/library/search_index.lbi";i:4;s:53:"D:/WWW/ectouch/themes/default/library/page_footer.lbi";}s:7:"expires";i:1497607198;s:8:"maketime";i:1497603598;}<!DOCTYPE html>
+<?php exit;?>a:3:{s:8:"template";a:5:{i:0;s:39:"D:/WWW/ectouch/themes/default/index.dwt";i:1;s:51:"D:/WWW/ectouch/themes/default/library/cat_goods.lbi";i:2;s:57:"D:/WWW/ectouch/themes/default/library/page_index_menu.lbi";i:3;s:54:"D:/WWW/ectouch/themes/default/library/search_index.lbi";i:4;s:53:"D:/WWW/ectouch/themes/default/library/page_footer.lbi";}s:7:"expires";i:1497842756;s:8:"maketime";i:1497839156;}<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
 <meta name="Generator" content="ECTouch 2.2.30" />
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>南古情商城</title>
+<title>南古情婚庆用品商城</title>
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/swiper/css/swiper.min.css"/>
 <link rel="stylesheet" href="__PUBLIC__/bootstrap/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="__TPL__/css/index.css?v=0003213"/>
@@ -88,11 +88,25 @@
   </div>
   <div class="index-theme" style="display:none">
       <ul class="index-more-list">
-      
-      </ul>
+            </ul>
   </div>
       <div class="con-index">新品展示</div>
       <ul class="index-more-list" id="J_ItemList">
+                  <li class="f1">
+            <a href="/index.php?m=default&c=goods&a=index&id=26&u=6"><img src="http://ectouch.com/data/assets/images/201706/goods_img/26_G_1497741511348.jpg" alt="宴会产品9" /></a>
+            <a href="/index.php?m=default&c=goods&a=index&id=26&u=6"><p>宴会产品9</p></a>
+            <span class="goods-price">￥100.00元</span>
+          </li>
+                  <li class="f1">
+            <a href="/index.php?m=default&c=goods&a=index&id=25&u=6"><img src="http://ectouch.com/data/assets/images/201706/goods_img/25_G_1497741563104.jpg" alt="宴会茶品8" /></a>
+            <a href="/index.php?m=default&c=goods&a=index&id=25&u=6"><p>宴会茶品8</p></a>
+            <span class="goods-price">￥1500.00元</span>
+          </li>
+                  <li class="f1">
+            <a href="/index.php?m=default&c=goods&a=index&id=23&u=6"><img src="http://ectouch.com/data/assets/images/201706/goods_img/23_G_1497573391762.jpg" alt="宴会产品003" /></a>
+            <a href="/index.php?m=default&c=goods&a=index&id=23&u=6"><p>宴会产品003</p></a>
+            <span class="goods-price">￥1500.00元</span>
+          </li>
                   <li class="f1">
             <a href="/index.php?m=default&c=goods&a=index&id=21&u=6"><img src="http://ectouch.com/data/assets/images/201706/goods_img/21_G_1497391218296.jpg" alt="产品002" /></a>
             <a href="/index.php?m=default&c=goods&a=index&id=21&u=6"><p>产品002</p></a>
@@ -106,11 +120,29 @@
                   <li class="f1">
             <a href="/index.php?m=default&c=goods&a=index&id=3&u=6"><img src="http://ectouch.com/data/assets/images/201706/goods_img/3_G_1497390962110.jpg" alt="宴会舞台产品001" /></a>
             <a href="/index.php?m=default&c=goods&a=index&id=3&u=6"><p>宴会舞台产品001</p></a>
-            <span class="goods-price">￥500.00元</span>
+            <span class="goods-price">￥200.00元</span>
           </li>
               </ul>
       <div class="con-index">主持人推荐</div>
       <ul class="index-more-list" id="J_ItemList1">
+                  <li class="f1">
+            <a href="/index.php?m=default&c=goods&a=index&id=11&u=6"><img src="http://ectouch.com/data/assets/images/201706/goods_img/11_G_1496682165761.jpg" alt="冯鹏畅" /></a>
+            <a href="/index.php?m=default&c=goods&a=index&id=11&u=6"><p>冯鹏畅</p></a>
+            <span><i class="iconfont">&#xe62e;</i><i class="iconfont">&#xe62e;</i><i class="iconfont">&#xe62e;</i><i class="iconfont">&#xe62e;</i><i class="iconfont">&#xe62e;</i><i class="iconfont">&#xe62e;</i></span>
+            <!-- <span class="goods-price">￥0元</span> -->
+          </li>
+                  <li class="f1">
+            <a href="/index.php?m=default&c=goods&a=index&id=9&u=6"><img src="http://ectouch.com/data/assets/images/201706/goods_img/9_G_1496682087681.jpg" alt="柯明01" /></a>
+            <a href="/index.php?m=default&c=goods&a=index&id=9&u=6"><p>柯明01</p></a>
+            <span><i class="iconfont">&#xe62e;</i><i class="iconfont">&#xe62e;</i><i class="iconfont">&#xe62e;</i><i class="iconfont">&#xe62e;</i><i class="iconfont">&#xe62e;</i><i class="iconfont">&#xe62e;</i></span>
+            <!-- <span class="goods-price">￥0元</span> -->
+          </li>
+                  <li class="f1">
+            <a href="/index.php?m=default&c=goods&a=index&id=7&u=6"><img src="http://ectouch.com/data/assets/images/201706/goods_img/7_G_1496682016115.jpg" alt="柯明" /></a>
+            <a href="/index.php?m=default&c=goods&a=index&id=7&u=6"><p>柯明</p></a>
+            <span><i class="iconfont">&#xe62e;</i><i class="iconfont">&#xe62e;</i><i class="iconfont">&#xe62e;</i><i class="iconfont">&#xe62e;</i><i class="iconfont">&#xe62e;</i><i class="iconfont">&#xe62e;</i></span>
+            <!-- <span class="goods-price">￥0元</span> -->
+          </li>
                   <li class="f1">
             <a href="/index.php?m=default&c=goods&a=index&id=5&u=6"><img src="http://ectouch.com/data/assets/images/201706/goods_img/5_G_1496681325132.jpg" alt="李磊" /></a>
             <a href="/index.php?m=default&c=goods&a=index&id=5&u=6"><p>李磊</p></a>
@@ -154,8 +186,7 @@
 		</div>
 		</form>
 			</div>
-</div>
-<a id="scrollUp" href="#top" style="position: fixed; z-index: 10;"><i class="fa fa-angle-up"></i></a>
+</div><a id="scrollUp" href="#top" style="position: fixed; z-index: 10;"><i class="fa fa-angle-up"></i></a>
 <style>
 #scrollUp {
 	border-radius:100%;
@@ -201,8 +232,7 @@
 			$(".search").hide();
 		}
 	}
-</script>
-<script type="text/javascript">
+</script><script type="text/javascript">
 get_asynclist("/index.php?m=default&c=index&a=ajax_goods&type=best&u=6" , '__TPL__/images/loader.gif');
 </script>
 <script>

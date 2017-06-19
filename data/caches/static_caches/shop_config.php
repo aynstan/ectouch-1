@@ -1,12 +1,12 @@
 <?php
 $data = array (
-  'shop_name' => '南古情商城',
-  'shop_title' => '南古情商城',
-  'shop_desc' => '南古情商城',
-  'shop_keywords' => '南古情商城',
+  'shop_name' => '南古情婚庆用品商城',
+  'shop_title' => '南古情婚庆用品商城',
+  'shop_desc' => '南古情婚庆用品商城',
+  'shop_keywords' => '南古情婚庆用品商城',
   'shop_country' => '1',
-  'shop_province' => '2',
-  'shop_city' => '52',
+  'shop_province' => '17',
+  'shop_city' => '233',
   'shop_address' => '',
   'qq' => '',
   'ww' => '',

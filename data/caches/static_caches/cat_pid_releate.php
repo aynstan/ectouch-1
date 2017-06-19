@@ -167,7 +167,7 @@ $data = array (
     'grade' => '0',
     'sort_order' => '9',
     'has_children' => '0',
-    'goods_num' => '3',
+    'goods_num' => '6',
   ),
   13 => 
   array (
@@ -531,7 +531,7 @@ $data = array (
     'grade' => '0',
     'sort_order' => '61',
     'has_children' => '0',
-    'goods_num' => 0,
+    'goods_num' => '1',
   ),
   41 => 
   array (
